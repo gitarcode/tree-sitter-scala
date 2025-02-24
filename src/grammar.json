@@ -703,8 +703,12 @@
                     "type": "CHOICE",
                     "members": [
                       {
-                        "type": "SYMBOL",
-                        "name": "namespace_wildcard"
+                        "type": "FIELD",
+                        "name": "wild_card",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "namespace_wildcard"
+                        }
                       },
                       {
                         "type": "SYMBOL",
@@ -8529,5 +8533,6 @@
     "expression",
     "_definition",
     "_pattern"
-  ]
+  ],
+  "reserved": {}
 }

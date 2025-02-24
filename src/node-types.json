@@ -2231,6 +2231,16 @@
             "named": true
           }
         ]
+      },
+      "wild_card": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "namespace_wildcard",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
@@ -2243,10 +2253,6 @@
         },
         {
           "type": "namespace_selectors",
-          "named": true
-        },
-        {
-          "type": "namespace_wildcard",
           "named": true
         }
       ]
@@ -3645,6 +3651,16 @@
             "named": true
           }
         ]
+      },
+      "wild_card": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "namespace_wildcard",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
@@ -3657,10 +3673,6 @@
         },
         {
           "type": "namespace_selectors",
-          "named": true
-        },
-        {
-          "type": "namespace_wildcard",
           "named": true
         }
       ]

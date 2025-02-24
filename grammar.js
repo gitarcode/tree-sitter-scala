@@ -234,7 +234,7 @@ module.exports = grammar({
             seq(
               ".",
               choice(
-                $.namespace_wildcard,
+                field("wild_card", $.namespace_wildcard),
                 $.namespace_selectors,
                 // Only allowed in Scala 3
                 // ImportExpr        ::=
