@@ -2214,6 +2214,24 @@
     "type": "export_declaration",
     "named": true,
     "fields": {
+      "import_spec": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "as_renamed_identifier",
+            "named": true
+          },
+          {
+            "type": "namespace_selectors",
+            "named": true
+          },
+          {
+            "type": "namespace_wildcard",
+            "named": true
+          }
+        ]
+      },
       "path": {
         "multiple": true,
         "required": true,
@@ -2231,31 +2249,7 @@
             "named": true
           }
         ]
-      },
-      "wild_card": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "namespace_wildcard",
-            "named": true
-          }
-        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "as_renamed_identifier",
-          "named": true
-        },
-        {
-          "type": "namespace_selectors",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -3634,6 +3628,24 @@
     "type": "import_declaration",
     "named": true,
     "fields": {
+      "import_spec": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "as_renamed_identifier",
+            "named": true
+          },
+          {
+            "type": "namespace_selectors",
+            "named": true
+          },
+          {
+            "type": "namespace_wildcard",
+            "named": true
+          }
+        ]
+      },
       "path": {
         "multiple": true,
         "required": true,
@@ -3651,31 +3663,7 @@
             "named": true
           }
         ]
-      },
-      "wild_card": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "namespace_wildcard",
-            "named": true
-          }
-        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "as_renamed_identifier",
-          "named": true
-        },
-        {
-          "type": "namespace_selectors",
-          "named": true
-        }
-      ]
     }
   },
   {

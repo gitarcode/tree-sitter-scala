@@ -700,25 +700,25 @@
                     "value": "."
                   },
                   {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "FIELD",
-                        "name": "wild_card",
-                        "content": {
+                    "type": "FIELD",
+                    "name": "import_spec",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
                           "type": "SYMBOL",
                           "name": "namespace_wildcard"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "namespace_selectors"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "as_renamed_identifier"
                         }
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "namespace_selectors"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "as_renamed_identifier"
-                      }
-                    ]
+                      ]
+                    }
                   }
                 ]
               },

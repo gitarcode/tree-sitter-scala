@@ -233,14 +233,14 @@ module.exports = grammar({
           optional(
             seq(
               ".",
-              choice(
-                field("wild_card", $.namespace_wildcard),
+              field("import_spec", choice(
+                $.namespace_wildcard,
                 $.namespace_selectors,
                 // Only allowed in Scala 3
                 // ImportExpr        ::=
                 //    SimpleRef {‘.’ id} ‘.’ ImportSpec |  SimpleRef ‘as’ id
                 $.as_renamed_identifier,
-              ),
+              )),
             ),
           ),
         ),
