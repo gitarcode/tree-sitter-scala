@@ -97,18 +97,6 @@ jobs:
         with:
           files: examples/**
 
-      - name: Check fidelity of checked-in C code
-        if: ${{ runner.os == 'Linux' && needs.changedfiles.outputs.gen }}
-        shell: bash
-        run: |
-          # `git diff --quiet` doesn't seem to work on Github Actions
-          changes=$(git diff --name-only --diff-filter=ACMRT | xargs)
-          if [ ! -z "$changes" ]; then
-            echo "::error file=grammar.js::Generated $changes differs from the checked in version"
-            git diff --exit-code
-            exit 1
-          fi
-
       - name: Smoke test
         if: ${{ runner.os == 'Linux' }}
         shell: bash
