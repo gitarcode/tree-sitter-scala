@@ -230,22 +230,16 @@ module.exports = grammar({
       seq(
         field("path", seq($._identifier, repeat(seq(".", $._identifier)))),
         ".",
-        field("import_spec", $.import_spec)
+        field("selector", $._import_selector)
       ),
       $.named_selector
     ),
 
-    import_spec: $ => choice(
+    _import_selector: $ => choice(
       $.named_selector,
       $.wildcard_selector,
-      seq("{", sep1(",", $._import_selector), optional(","), "}")
+      seq("{", sep1(",", choice($.named_selector, $.wildcard_selector)), optional(","), "}")
     ),
-
-    _import_selector: $ =>
-      choice(
-        $.named_selector,
-        $.wildcard_selector
-      ),
 
     named_selector: $ => seq(
       field("name", $._identifier),

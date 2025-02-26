@@ -3540,16 +3540,6 @@
     "type": "import_expr",
     "named": true,
     "fields": {
-      "import_spec": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "import_spec",
-            "named": true
-          }
-        ]
-      },
       "path": {
         "multiple": true,
         "required": false,
@@ -3567,6 +3557,32 @@
             "named": true
           }
         ]
+      },
+      "selector": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "named_selector",
+            "named": true
+          },
+          {
+            "type": "wildcard_selector",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
       }
     },
     "children": {
@@ -3575,25 +3591,6 @@
       "types": [
         {
           "type": "named_selector",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_spec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "named_selector",
-          "named": true
-        },
-        {
-          "type": "wildcard_selector",
           "named": true
         }
       ]

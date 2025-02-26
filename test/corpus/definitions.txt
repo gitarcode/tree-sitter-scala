@@ -242,49 +242,42 @@ import a.{ :: }
   (import_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)))))
+      (named_selector
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))))
+      (named_selector
+        (identifier)))
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)))))
+      (named_selector
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))
-        (named_selector
-          (identifier))
-        (named_selector
-          (identifier)))))
+      (named_selector
+        (identifier))
+      (named_selector
+        (identifier))
+      (named_selector
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)))))
+      (named_selector
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (operator_identifier)))))
+      (named_selector
+        (operator_identifier))))
   (import_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (operator_identifier))))))
+      (named_selector
+        (operator_identifier)))))
 
 ================================================================================
 Imports: Wildcard
@@ -300,8 +293,7 @@ import tools.nsc.classpath._
       (identifier)
       (identifier)
       (identifier)
-      (import_spec
-        (wildcard_selector)))))
+      (wildcard_selector))))
 
 ================================================================================
 Imports: Wildcard (Scala 3 syntax)
@@ -318,23 +310,19 @@ import a.b.*, b.c, c.*
       (identifier)
       (identifier)
       (identifier)
-      (import_spec
-        (wildcard_selector))))
+      (wildcard_selector)))
   (import_declaration
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (wildcard_selector)))
+      (wildcard_selector))
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))))
+      (named_selector
+        (identifier)))
     (import_expr
       (identifier)
-      (import_spec
-        (wildcard_selector)))))
+      (wildcard_selector))))
 
 ================================================================================
 Imports: Wildcard and wildcard givens (Scala 3 syntax)
@@ -351,14 +339,12 @@ import tools.given
       (identifier)
       (identifier)
       (identifier)
-      (import_spec
-        (wildcard_selector)
-        (wildcard_selector))))
+      (wildcard_selector)
+      (wildcard_selector)))
   (import_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (wildcard_selector)))))
+      (wildcard_selector))))
 
 ================================================================================
 Imports: Givens by type (Scala 3 syntax)
@@ -374,13 +360,12 @@ import tools.nsc.classpath.{given Test, given Test2, Test3}
       (identifier)
       (identifier)
       (identifier)
-      (import_spec
-        (wildcard_selector
-          (type_identifier))
-        (wildcard_selector
-          (type_identifier))
-        (named_selector
-          (identifier))))))
+      (wildcard_selector
+        (type_identifier))
+      (wildcard_selector
+        (type_identifier))
+      (named_selector
+        (identifier)))))
 
 ================================================================================
 Imports: Rename (Scala 3 Syntax)
@@ -397,25 +382,22 @@ import lang.System.lineSeparator as _
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)
-          (identifier)))))
+      (named_selector
+        (identifier)
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)
-          (identifier)))))
+      (named_selector
+        (identifier)
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))))))
+      (named_selector
+        (identifier)))))
 
 ================================================================================
 Imports: Rename
@@ -431,17 +413,15 @@ import lang.System.{lineSeparator => _}
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)
-          (identifier)))))
+      (named_selector
+        (identifier)
+        (identifier))))
   (import_declaration
     (import_expr
       (identifier)
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))))))
+      (named_selector
+        (identifier)))))
 
 ================================================================================
 Object definitions
@@ -1908,26 +1888,22 @@ export printUnit.Test as _
   (export_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)))))
+      (named_selector
+        (identifier))))
   (export_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))
-        (wildcard_selector))))
+      (named_selector
+        (identifier))
+      (wildcard_selector)))
   (export_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier)
-          (identifier)))))
+      (named_selector
+        (identifier)
+        (identifier))))
   (export_declaration
     (import_expr
       (identifier)
-      (import_spec
-        (named_selector
-          (identifier))))))
+      (named_selector
+        (identifier)))))

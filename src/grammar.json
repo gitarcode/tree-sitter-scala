@@ -695,10 +695,10 @@
             },
             {
               "type": "FIELD",
-              "name": "import_spec",
+              "name": "selector",
               "content": {
                 "type": "SYMBOL",
-                "name": "import_spec"
+                "name": "_import_selector"
               }
             }
           ]
@@ -709,7 +709,7 @@
         }
       ]
     },
-    "import_spec": {
+    "_import_selector": {
       "type": "CHOICE",
       "members": [
         {
@@ -731,8 +731,17 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_import_selector"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "named_selector"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "wildcard_selector"
+                    }
+                  ]
                 },
                 {
                   "type": "REPEAT",
@@ -744,8 +753,17 @@
                         "value": ","
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "_import_selector"
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "named_selector"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "wildcard_selector"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -769,19 +787,6 @@
               "value": "}"
             }
           ]
-        }
-      ]
-    },
-    "_import_selector": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "named_selector"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "wildcard_selector"
         }
       ]
     },
