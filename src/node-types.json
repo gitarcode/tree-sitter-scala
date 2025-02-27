@@ -2143,7 +2143,7 @@
       "required": true,
       "types": [
         {
-          "type": "import_expr",
+          "type": "import_expression",
           "named": true
         }
       ]
@@ -3530,14 +3530,14 @@
       "required": true,
       "types": [
         {
-          "type": "import_expr",
+          "type": "import_expression",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "import_expr",
+    "type": "import_expression",
     "named": true,
     "fields": {
       "path": {

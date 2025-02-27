@@ -56,22 +56,22 @@
 ; imports/exports
 
 (import_declaration
-  (import_expr
+  (import_expression
     path: (identifier) @namespace))
 ((stable_identifier (identifier) @namespace))
 
 ((import_declaration
-  (import_expr
+  (import_expression
     path: (identifier) @type) (#match? @type "^[A-Z]")))
 ((stable_identifier (identifier) @type) (#match? @type "^[A-Z]"))
 
 (export_declaration
-  (import_expr
+  (import_expression
     path: (identifier) @namespace))
 ((stable_identifier (identifier) @namespace))
 
 ((export_declaration
-  (import_expr
+  (import_expression
     path: (identifier) @type) (#match? @type "^[A-Z]")))
 ((stable_identifier (identifier) @type) (#match? @type "^[A-Z]"))
 

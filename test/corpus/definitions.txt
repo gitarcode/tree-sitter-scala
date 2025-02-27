@@ -240,21 +240,21 @@ import a.{ :: }
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier)))
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (named_selector
@@ -264,17 +264,17 @@ import a.{ :: }
       (named_selector
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (operator_identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (operator_identifier)))))
@@ -289,7 +289,7 @@ import tools.nsc.classpath._
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (identifier)
@@ -306,21 +306,21 @@ import a.b.*, b.c, c.*
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (identifier)
       (wildcard_selector)))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (wildcard_selector))
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier)))
-    (import_expr
+    (import_expression
       (identifier)
       (wildcard_selector))))
 
@@ -335,14 +335,14 @@ import tools.given
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (identifier)
       (wildcard_selector)
       (wildcard_selector)))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (wildcard_selector))))
 
@@ -356,7 +356,7 @@ import tools.nsc.classpath.{given Test, given Test2, Test3}
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (identifier)
@@ -379,21 +379,21 @@ import lang.System.lineSeparator as _
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (named_selector
         (identifier)
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (named_selector
         (identifier)
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (named_selector
@@ -410,14 +410,14 @@ import lang.System.{lineSeparator => _}
 
 (compilation_unit
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (named_selector
         (identifier)
         (identifier))))
   (import_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (identifier)
       (named_selector
@@ -1886,24 +1886,24 @@ export printUnit.Test as _
 
 (compilation_unit
   (export_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier))))
   (export_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier))
       (wildcard_selector)))
   (export_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier)
         (identifier))))
   (export_declaration
-    (import_expr
+    (import_expression
       (identifier)
       (named_selector
         (identifier)))))

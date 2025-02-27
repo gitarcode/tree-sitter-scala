@@ -221,12 +221,12 @@ module.exports = grammar({
     package_object: $ => seq("package", "object", $._object_definition),
 
     import_declaration: $ =>
-      prec.left(seq("import", sep1(",", $.import_expr))),
+      prec.left(seq("import", sep1(",", $.import_expression))),
 
     export_declaration: $ =>
-      prec.left(seq("export", sep1(",", $.import_expr))),
+      prec.left(seq("export", sep1(",", $.import_expression))),
 
-    import_expr: $ => choice(
+    import_expression: $ => choice(
       seq(
         field("path", seq($._identifier, repeat(seq(".", $._identifier)))),
         ".",
