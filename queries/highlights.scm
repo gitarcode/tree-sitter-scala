@@ -56,22 +56,26 @@
 ; imports/exports
 
 (import_declaration
-  path: (identifier) @namespace)
+  (import_expression
+    path: (identifier) @namespace))
 ((stable_identifier (identifier) @namespace))
 
 ((import_declaration
-  path: (identifier) @type) (#match? @type "^[A-Z]"))
+  (import_expression
+    path: (identifier) @type) (#match? @type "^[A-Z]")))
 ((stable_identifier (identifier) @type) (#match? @type "^[A-Z]"))
 
 (export_declaration
-  path: (identifier) @namespace)
+  (import_expression
+    path: (identifier) @namespace))
 ((stable_identifier (identifier) @namespace))
 
 ((export_declaration
-  path: (identifier) @type) (#match? @type "^[A-Z]"))
+  (import_expression
+    path: (identifier) @type) (#match? @type "^[A-Z]")))
 ((stable_identifier (identifier) @type) (#match? @type "^[A-Z]"))
 
-((namespace_selectors (identifier) @type) (#match? @type "^[A-Z]"))
+((named_selector (identifier) @type) (#match? @type "^[A-Z]"))
 
 ; method invocation
 

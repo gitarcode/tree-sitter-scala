@@ -240,31 +240,44 @@ import a.{ :: }
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier))
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier))))
   (import_declaration
-    (identifier)
-    (identifier)
-    (identifier)
-    (identifier))
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier)))
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier))))
   (import_declaration
-    (identifier)
-    (identifier)
-    (namespace_selectors
+    (import_expression
       (identifier)
       (identifier)
-      (identifier)))
+      (named_selector
+        (identifier))
+      (named_selector
+        (identifier))
+      (named_selector
+        (identifier))))
   (import_declaration
-    (identifier)
-    (namespace_selectors
-      (identifier)))
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier))))
   (import_declaration
-    (identifier)
-    (operator_identifier))
+    (import_expression
+      (identifier)
+      (named_selector
+        (operator_identifier))))
   (import_declaration
-    (identifier)
-    (namespace_selectors
-      (operator_identifier))))
+    (import_expression
+      (identifier)
+      (named_selector
+        (operator_identifier)))))
 
 ================================================================================
 Imports: Wildcard
@@ -276,10 +289,11 @@ import tools.nsc.classpath._
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier)
-    (identifier)
-    (namespace_wildcard)))
+    (import_expression
+      (identifier)
+      (identifier)
+      (identifier)
+      (wildcard_selector))))
 
 ================================================================================
 Imports: Wildcard (Scala 3 syntax)
@@ -292,18 +306,23 @@ import a.b.*, b.c, c.*
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier)
-    (identifier)
-    (namespace_wildcard))
+    (import_expression
+      (identifier)
+      (identifier)
+      (identifier)
+      (wildcard_selector)))
   (import_declaration
-    (identifier)
-    (identifier)
-    (namespace_wildcard)
-    (identifier)
-    (identifier)
-    (identifier)
-    (namespace_wildcard)))
+    (import_expression
+      (identifier)
+      (identifier)
+      (wildcard_selector))
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier)))
+    (import_expression
+      (identifier)
+      (wildcard_selector))))
 
 ================================================================================
 Imports: Wildcard and wildcard givens (Scala 3 syntax)
@@ -316,15 +335,16 @@ import tools.given
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier)
-    (identifier)
-    (namespace_selectors
-      (namespace_wildcard)
-      (namespace_wildcard)))
+    (import_expression
+      (identifier)
+      (identifier)
+      (identifier)
+      (wildcard_selector)
+      (wildcard_selector)))
   (import_declaration
-    (identifier)
-    (namespace_wildcard)))
+    (import_expression
+      (identifier)
+      (wildcard_selector))))
 
 ================================================================================
 Imports: Givens by type (Scala 3 syntax)
@@ -336,13 +356,16 @@ import tools.nsc.classpath.{given Test, given Test2, Test3}
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier)
-    (identifier)
-    (namespace_selectors
-      (type_identifier)
-      (type_identifier)
-      (identifier))))
+    (import_expression
+      (identifier)
+      (identifier)
+      (identifier)
+      (wildcard_selector
+        (type_identifier))
+      (wildcard_selector
+        (type_identifier))
+      (named_selector
+        (identifier)))))
 
 ================================================================================
 Imports: Rename (Scala 3 Syntax)
@@ -356,24 +379,25 @@ import lang.System.lineSeparator as _
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier)
-    (namespace_selectors
-      (as_renamed_identifier
+    (import_expression
+      (identifier)
+      (identifier)
+      (named_selector
         (identifier)
         (identifier))))
   (import_declaration
-    (identifier)
-    (identifier)
-    (as_renamed_identifier
+    (import_expression
       (identifier)
-      (identifier)))
+      (identifier)
+      (named_selector
+        (identifier)
+        (identifier))))
   (import_declaration
-    (identifier)
-    (identifier)
-    (as_renamed_identifier
+    (import_expression
       (identifier)
-      (wildcard))))
+      (identifier)
+      (named_selector
+        (identifier)))))
 
 ================================================================================
 Imports: Rename
@@ -386,19 +410,18 @@ import lang.System.{lineSeparator => _}
 
 (compilation_unit
   (import_declaration
-    (identifier)
-    (identifier)
-    (namespace_selectors
-      (arrow_renamed_identifier
+    (import_expression
+      (identifier)
+      (identifier)
+      (named_selector
         (identifier)
         (identifier))))
   (import_declaration
-    (identifier)
-    (identifier)
-    (namespace_selectors
-      (arrow_renamed_identifier
-        (identifier)
-        (wildcard)))))
+    (import_expression
+      (identifier)
+      (identifier)
+      (named_selector
+        (identifier)))))
 
 ================================================================================
 Object definitions
@@ -1863,22 +1886,24 @@ export printUnit.Test as _
 
 (compilation_unit
   (export_declaration
-    (identifier)
-    (identifier))
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier))))
   (export_declaration
-    (identifier)
-    (namespace_selectors
-      (as_renamed_identifier
+    (import_expression
+      (identifier)
+      (named_selector
+        (identifier))
+      (wildcard_selector)))
+  (export_declaration
+    (import_expression
+      (identifier)
+      (named_selector
         (identifier)
-        (wildcard))
-      (namespace_wildcard)))
+        (identifier))))
   (export_declaration
-    (identifier)
-    (as_renamed_identifier
+    (import_expression
       (identifier)
-      (identifier)))
-  (export_declaration
-    (identifier)
-    (as_renamed_identifier
-      (identifier)
-      (wildcard))))
+      (named_selector
+        (identifier)))))

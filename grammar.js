@@ -221,66 +221,35 @@ module.exports = grammar({
     package_object: $ => seq("package", "object", $._object_definition),
 
     import_declaration: $ =>
-      prec.left(seq("import", sep1(",", $._namespace_expression))),
+      prec.left(seq("import", sep1(",", $.import_expression))),
 
     export_declaration: $ =>
-      prec.left(seq("export", sep1(",", $._namespace_expression))),
+      prec.left(seq("export", sep1(",", $.import_expression))),
 
-    _namespace_expression: $ =>
-      prec.left(
-        seq(
-          field("path", sep1(".", $._identifier)),
-          optional(
-            seq(
-              ".",
-              choice(
-                $.namespace_wildcard,
-                $.namespace_selectors,
-                // Only allowed in Scala 3
-                // ImportExpr        ::=
-                //    SimpleRef {‘.’ id} ‘.’ ImportSpec |  SimpleRef ‘as’ id
-                $.as_renamed_identifier,
-              ),
-            ),
-          ),
-        ),
-      ),
-
-    namespace_wildcard: $ => prec.left(1, choice("*", "_", "given")),
-
-    _namespace_given_by_type: $ => seq("given", $._type),
-
-    namespace_selectors: $ =>
+    import_expression: $ => choice(
       seq(
-        "{",
-        trailingCommaSep1(
-          choice(
-            $._namespace_given_by_type,
-            $.namespace_wildcard,
-            $._identifier,
-            $.arrow_renamed_identifier,
-            $.as_renamed_identifier,
-          ),
-        ),
-        "}",
+        field("path", seq($._identifier, repeat(seq(".", $._identifier)))),
+        ".",
+        field("selector", $._import_selector)
       ),
+      $.named_selector
+    ),
 
-    // deprecated: Remove when highlight query is updated for Neovim
-    _import_selectors: $ => alias($.namespace_selectors, $.import_selectors),
+    _import_selector: $ => choice(
+      $.named_selector,
+      $.wildcard_selector,
+      seq("{", sep1(",", choice($.named_selector, $.wildcard_selector)), optional(","), "}")
+    ),
 
-    arrow_renamed_identifier: $ =>
-      seq(
-        field("name", $._identifier),
-        "=>",
-        field("alias", choice($._identifier, $.wildcard)),
-      ),
+    named_selector: $ => seq(
+      field("name", $._identifier),
+      optional(seq(choice("as", "=>"), choice(field("alias", $._identifier), "_"))),
+    ),
 
-    as_renamed_identifier: $ =>
-      seq(
-        field("name", $._identifier),
-        "as",
-        field("alias", choice($._identifier, $.wildcard)),
-      ),
+    wildcard_selector: $ => choice(
+      choice("*", token(prec(1, "_"))),
+      seq("given", optional($._type))
+    ),
 
     object_definition: $ =>
       seq(
