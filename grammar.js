@@ -518,7 +518,7 @@ module.exports = grammar({
     function_definition: $ =>
       seq(
         $._function_declaration,
-        $.function_body
+        field("body", $.function_body)
       ),
 
     function_declaration: $ => $._function_declaration,
@@ -553,8 +553,8 @@ module.exports = grammar({
       ),
 
     function_body: $ => choice(
-      seq("=", field("body", $._indentable_expression)),
-      field("body", $.block),
+      seq("=", $._indentable_expression),
+      $.block,
     ),
 
     opaque_modifier: $ => prec("mod", "opaque"),

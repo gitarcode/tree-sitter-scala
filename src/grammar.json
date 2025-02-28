@@ -2486,8 +2486,12 @@
           "name": "_function_declaration"
         },
         {
-          "type": "SYMBOL",
-          "name": "function_body"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "function_body"
+          }
         }
       ]
     },
@@ -2633,22 +2637,14 @@
               "value": "="
             },
             {
-              "type": "FIELD",
-              "name": "body",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_indentable_expression"
-              }
+              "type": "SYMBOL",
+              "name": "_indentable_expression"
             }
           ]
         },
         {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "block"
-          }
+          "type": "SYMBOL",
+          "name": "block"
         }
       ]
     },
