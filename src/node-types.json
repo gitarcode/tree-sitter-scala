@@ -2571,6 +2571,30 @@
     }
   },
   {
+    "type": "function_body",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "indented_block",
+            "named": true
+          },
+          {
+            "type": "indented_cases",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function_declaration",
     "named": true,
     "fields": {
@@ -2692,24 +2716,6 @@
     "type": "function_definition",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          },
-          {
-            "type": "indented_block",
-            "named": true
-          },
-          {
-            "type": "indented_cases",
-            "named": true
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
@@ -2811,10 +2817,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "annotation",
+          "named": true
+        },
+        {
+          "type": "function_body",
           "named": true
         },
         {

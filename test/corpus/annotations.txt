@@ -28,24 +28,45 @@ class A(x: String) {
 ---
 
 (compilation_unit
-  (class_definition (identifier)
-    (class_parameters (class_parameter (identifier) (type_identifier)))
+  (class_definition
+    (identifier)
+    (class_parameters
+      (class_parameter
+        (identifier)
+        (type_identifier)))
     (template_body
       (var_declaration
-        (annotation (type_identifier))
-        (annotation (type_identifier))
-        (identifier) (type_identifier))
+        (annotation
+          (type_identifier))
+        (annotation
+          (type_identifier))
+        (identifier)
+        (type_identifier))
       (val_definition
-        (annotation (type_identifier))
-        (annotation (type_identifier))
-        (identifier) (identifier))
+        (annotation
+          (type_identifier))
+        (annotation
+          (type_identifier))
+        (identifier)
+        (identifier))
       (function_definition
-        (annotation (type_identifier) (arguments (identifier)))
-        (annotation (type_identifier)
+        (annotation
+          (type_identifier)
           (arguments
-            (assignment_expression (identifier) (string))
-            (assignment_expression (identifier) (string))))
-        (identifier) (parameters) (block)))))
+            (identifier)))
+        (annotation
+          (type_identifier)
+          (arguments
+            (assignment_expression
+              (identifier)
+              (string))
+            (assignment_expression
+              (identifier)
+              (string))))
+        (identifier)
+        (parameters)
+        (function_body
+          (block))))))
 
 ================================
 Parameters
@@ -58,17 +79,25 @@ class A(@one x: String) {
 ---
 
 (compilation_unit
-  (class_definition (identifier)
+  (class_definition
+    (identifier)
     (class_parameters
       (class_parameter
-        (annotation (type_identifier)) (identifier) (type_identifier)))
+        (annotation
+          (type_identifier))
+        (identifier)
+        (type_identifier)))
     (template_body
       (function_definition
         (identifier)
-        (parameters (parameter
-                      (annotation (type_identifier))
-                      (identifier) (type_identifier)))
-        (block)))))
+        (parameters
+          (parameter
+            (annotation
+              (type_identifier))
+            (identifier)
+            (type_identifier)))
+        (function_body
+          (block))))))
 
 ================================
 Types

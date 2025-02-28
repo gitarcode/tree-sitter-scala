@@ -28,66 +28,67 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (call_expression
-            (identifier)
-            (arguments))
-          (call_expression
-            (identifier)
-            (arguments
-              (integer_literal)
-              (integer_literal)))
-          (call_expression
-            (operator_identifier)
-            (arguments
-              (integer_literal)))
-          (call_expression
-            (identifier)
-            (arguments
+        (function_body
+          (block
+            (call_expression
               (identifier)
-              (identifier)))
-          (call_expression
-            (field_expression
+              (arguments))
+            (call_expression
               (identifier)
-              (identifier))
-            (arguments
-              (lambda_expression
+              (arguments
+                (integer_literal)
+                (integer_literal)))
+            (call_expression
+              (operator_identifier)
+              (arguments
+                (integer_literal)))
+            (call_expression
+              (identifier)
+              (arguments
                 (identifier)
-                (infix_expression
-                  (identifier)
-                  (operator_identifier)
-                  (integer_literal)))))
-          (call_expression
-            (identifier)
-            (block
-              (integer_literal)))
-          (call_expression
-            (identifier)
-            (block
-              (identifier)))
-          (call_expression
-            (field_expression
-              (identifier)
-              (identifier))
-            (block
-              (lambda_expression
+                (identifier)))
+            (call_expression
+              (field_expression
                 (identifier)
-                (infix_expression
+                (identifier))
+              (arguments
+                (lambda_expression
                   (identifier)
-                  (operator_identifier)
-                  (integer_literal)))))
-          (block_comment)
-          (call_expression
-            (field_expression
-              (identifier)
-              (identifier))
-            (case_block
-              (case_clause
-                (tuple_pattern
-                  (tuple_pattern
+                  (infix_expression
                     (identifier)
-                    (wildcard)))
-                (identifier)))))))))
+                    (operator_identifier)
+                    (integer_literal)))))
+            (call_expression
+              (identifier)
+              (block
+                (integer_literal)))
+            (call_expression
+              (identifier)
+              (block
+                (identifier)))
+            (call_expression
+              (field_expression
+                (identifier)
+                (identifier))
+              (block
+                (lambda_expression
+                  (identifier)
+                  (infix_expression
+                    (identifier)
+                    (operator_identifier)
+                    (integer_literal)))))
+            (block_comment)
+            (call_expression
+              (field_expression
+                (identifier)
+                (identifier))
+              (case_block
+                (case_clause
+                  (tuple_pattern
+                    (tuple_pattern
+                      (identifier)
+                      (wildcard)))
+                  (identifier))))))))))
 
 ================================================================================
 Call expressions (Scala 3 syntax)
@@ -125,12 +126,14 @@ class C {
             (template_body
               (function_definition
                 (identifier)
-                (instance_expression
-                  (type_identifier)
-                  (template_body
-                    (function_definition
-                      (identifier)
-                      (integer_literal))))))))))))
+                (function_body
+                  (instance_expression
+                    (type_identifier)
+                    (template_body
+                      (function_definition
+                        (identifier)
+                        (function_body
+                          (integer_literal))))))))))))))
 
 ================================================================================
 SIP-44 Fewer braces (Scala 3 syntax)
@@ -253,23 +256,24 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (call_expression
-            (generic_function
-              (identifier)
-              (type_arguments
-                (type_identifier)
-                (type_identifier)))
-            (arguments))
-          (call_expression
-            (generic_function
-              (identifier)
-              (type_arguments
-                (generic_type
+        (function_body
+          (block
+            (call_expression
+              (generic_function
+                (identifier)
+                (type_arguments
                   (type_identifier)
-                  (type_arguments
-                    (type_identifier)))))
-            (arguments)))))))
+                  (type_identifier)))
+              (arguments))
+            (call_expression
+              (generic_function
+                (identifier)
+                (type_arguments
+                  (generic_type
+                    (type_identifier)
+                    (type_arguments
+                      (type_identifier)))))
+              (arguments))))))))
 
 ================================================================================
 Assignments
@@ -291,16 +295,17 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (assignment_expression
-            (identifier)
-            (identifier))
-          (assignment_expression
-            (call_expression
+        (function_body
+          (block
+            (assignment_expression
               (identifier)
-              (arguments
-                (integer_literal)))
-            (identifier)))))))
+              (identifier))
+            (assignment_expression
+              (call_expression
+                (identifier)
+                (arguments
+                  (integer_literal)))
+              (identifier))))))))
 
 ================================================================================
 If expressions
@@ -342,20 +347,11 @@ def another() {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (if_expression
-            (parenthesized_expression
-              (identifier))
-            (call_expression
-              (identifier)
-              (arguments)))
-          (if_expression
-            (parenthesized_expression
-              (identifier))
-            (block
-              (call_expression
-                (identifier)
-                (arguments))
+        (function_body
+          (block
+            (if_expression
+              (parenthesized_expression
+                (identifier))
               (call_expression
                 (identifier)
                 (arguments)))
@@ -365,37 +361,49 @@ def another() {
               (block
                 (call_expression
                   (identifier)
-                  (arguments)))
-              (block
+                  (arguments))
                 (call_expression
                   (identifier)
-                  (arguments)))))))))
+                  (arguments)))
+              (if_expression
+                (parenthesized_expression
+                  (identifier))
+                (block
+                  (call_expression
+                    (identifier)
+                    (arguments)))
+                (block
+                  (call_expression
+                    (identifier)
+                    (arguments))))))))))
   (function_definition
     (identifier)
     (parameters)
-    (block
-      (if_expression
-        (parenthesized_expression
-          (identifier))
-        (block
-          (identifier))
-        (call_expression
-          (identifier)
-          (arguments)))))
+    (function_body
+      (block
+        (if_expression
+          (parenthesized_expression
+            (identifier))
+          (block
+            (identifier))
+          (call_expression
+            (identifier)
+            (arguments))))))
   (function_definition
     (identifier)
     (parameters)
-    (block
-      (if_expression
-        (parenthesized_expression
-          (identifier))
-        (match_expression
-          (identifier)
-          (case_block
-            (case_clause
-              (wildcard)
-              (identifier))))
-        (identifier)))))
+    (function_body
+      (block
+        (if_expression
+          (parenthesized_expression
+            (identifier))
+          (match_expression
+            (identifier)
+            (case_block
+              (case_clause
+                (wildcard)
+                (identifier))))
+          (identifier))))))
 
 ================================================================================
 If expressions (Scala 3 syntax)
@@ -438,61 +446,62 @@ class C:
       (function_definition
         (identifier)
         (parameters)
-        (indented_block
-          (if_expression
-            (identifier)
-            (call_expression
-              (identifier)
-              (arguments)))
-          (if_expression
-            (indented_block
-              (val_definition
-                (identifier)
-                (boolean_literal))
-              (identifier))
-            (indented_block
-              (call_expression
-                (identifier)
-                (arguments))
-              (integer_literal))
+        (function_body
+          (indented_block
             (if_expression
               (identifier)
-              (indented_block
-                (call_expression
-                  (identifier)
-                  (arguments)))
-              (indented_block
-                (call_expression
-                  (identifier)
-                  (arguments)))))
-          (if_expression
-            (boolean_literal)
-            (indented_block
-              (unit)
-              (comment))
-            (indented_block
-              (unit)))
-          (if_expression
-            (infix_expression
-              (parenthesized_expression
-                (identifier))
-              (operator_identifier)
               (call_expression
                 (identifier)
-                (arguments
-                  (identifier))))
-            (return_expression
-              (boolean_literal)))
-          (if_expression
-            (infix_expression
-              (parenthesized_expression
+                (arguments)))
+            (if_expression
+              (indented_block
+                (val_definition
+                  (identifier)
+                  (boolean_literal))
                 (identifier))
-              (operator_identifier)
-              (field_expression
+              (indented_block
+                (call_expression
+                  (identifier)
+                  (arguments))
+                (integer_literal))
+              (if_expression
                 (identifier)
-                (identifier)))
-            (indented_block
-              (unit))))))))
+                (indented_block
+                  (call_expression
+                    (identifier)
+                    (arguments)))
+                (indented_block
+                  (call_expression
+                    (identifier)
+                    (arguments)))))
+            (if_expression
+              (boolean_literal)
+              (indented_block
+                (unit)
+                (comment))
+              (indented_block
+                (unit)))
+            (if_expression
+              (infix_expression
+                (parenthesized_expression
+                  (identifier))
+                (operator_identifier)
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (identifier))))
+              (return_expression
+                (boolean_literal)))
+            (if_expression
+              (infix_expression
+                (parenthesized_expression
+                  (identifier))
+                (operator_identifier)
+                (field_expression
+                  (identifier)
+                  (identifier)))
+              (indented_block
+                (unit)))))))))
 
 ================================================================================
 Try expressions
@@ -521,71 +530,72 @@ def main() {
   (function_definition
     (identifier)
     (parameters)
-    (block
-      (try_expression
-        (call_expression
-          (identifier)
-          (arguments))
-        (finally_clause
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (integer_literal))))
-      (try_expression
-        (block
+    (function_body
+      (block
+        (try_expression
           (call_expression
             (identifier)
-            (arguments)))
-        (catch_clause
-          (case_block
-            (case_clause
-              (typed_pattern
-                (identifier)
-                (type_identifier))
-              (call_expression
-                (identifier)
-                (arguments
-                  (field_expression
-                    (identifier)
-                    (identifier)))))
-            (case_clause
-              (case_class_pattern
-                (type_identifier)
-                (identifier))
-              (throw_expression
-                (instance_expression
-                  (type_identifier)
-                  (arguments
-                    (identifier)))))))
-        (finally_clause
+            (arguments))
+          (finally_clause
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (integer_literal))))
+        (try_expression
           (block
             (call_expression
               (identifier)
-              (arguments)))))
-      (try_expression
-        (call_expression
-          (identifier)
-          (arguments))
-        (catch_clause
-          (case_block
-            (case_clause
-              (identifier)
+              (arguments)))
+          (catch_clause
+            (case_block
+              (case_clause
+                (typed_pattern
+                  (identifier)
+                  (type_identifier))
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (field_expression
+                      (identifier)
+                      (identifier)))))
+              (case_clause
+                (case_class_pattern
+                  (type_identifier)
+                  (identifier))
+                (throw_expression
+                  (instance_expression
+                    (type_identifier)
+                    (arguments
+                      (identifier)))))))
+          (finally_clause
+            (block
               (call_expression
                 (identifier)
-                (arguments
-                  (identifier))))))
-        (finally_clause
+                (arguments)))))
+        (try_expression
           (call_expression
             (identifier)
-            (arguments))))
-      (try_expression
-        (call_expression
-          (identifier)
-          (arguments))
-        (finally_clause
+            (arguments))
+          (catch_clause
+            (case_block
+              (case_clause
+                (identifier)
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (identifier))))))
+          (finally_clause
+            (call_expression
+              (identifier)
+              (arguments))))
+        (try_expression
           (call_expression
             (identifier)
-            (arguments)))))))
+            (arguments))
+          (finally_clause
+            (call_expression
+              (identifier)
+              (arguments))))))))
 
 ================================================================================
 Try expressions (Scala 3 syntax)
@@ -614,69 +624,70 @@ def main(): Unit =
     (identifier)
     (parameters)
     (type_identifier)
-    (indented_block
-      (try_expression
-        (call_expression
-          (identifier)
-          (arguments))
-        (finally_clause
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (integer_literal))))
-      (try_expression
-        (indented_block
+    (function_body
+      (indented_block
+        (try_expression
           (call_expression
             (identifier)
             (arguments))
-          (call_expression
-            (identifier)
-            (arguments)))
-        (catch_clause
-          (indented_cases
-            (case_clause
-              (typed_pattern
-                (identifier)
-                (type_identifier))
-              (call_expression
-                (identifier)
-                (arguments
-                  (field_expression
-                    (identifier)
-                    (identifier)))))
-            (case_clause
-              (case_class_pattern
-                (type_identifier)
-                (identifier))
-              (throw_expression
-                (instance_expression
-                  (type_identifier)
-                  (arguments
-                    (identifier)))))))
-        (finally_clause
+          (finally_clause
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (integer_literal))))
+        (try_expression
           (indented_block
             (call_expression
               (identifier)
               (arguments))
             (call_expression
               (identifier)
-              (arguments)))))
-      (try_expression
-        (identifier)
-        (catch_clause
-          (typed_pattern
-            (identifier)
-            (type_identifier))
-          (identifier))
-        (finally_clause
-          (identifier)))
-      (try_expression
-        (identifier)
-        (catch_clause
-          (typed_pattern
-            (identifier)
-            (type_identifier))
-          (identifier))))))
+              (arguments)))
+          (catch_clause
+            (indented_cases
+              (case_clause
+                (typed_pattern
+                  (identifier)
+                  (type_identifier))
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (field_expression
+                      (identifier)
+                      (identifier)))))
+              (case_clause
+                (case_class_pattern
+                  (type_identifier)
+                  (identifier))
+                (throw_expression
+                  (instance_expression
+                    (type_identifier)
+                    (arguments
+                      (identifier)))))))
+          (finally_clause
+            (indented_block
+              (call_expression
+                (identifier)
+                (arguments))
+              (call_expression
+                (identifier)
+                (arguments)))))
+        (try_expression
+          (identifier)
+          (catch_clause
+            (typed_pattern
+              (identifier)
+              (type_identifier))
+            (identifier))
+          (finally_clause
+            (identifier)))
+        (try_expression
+          (identifier)
+          (catch_clause
+            (typed_pattern
+              (identifier)
+              (type_identifier))
+            (identifier)))))))
 
 ================================================================================
 Match expressions
@@ -712,68 +723,69 @@ def matchTest(x: Int): String = x match {
         (identifier)
         (type_identifier)))
     (type_identifier)
-    (match_expression
-      (identifier)
-      (case_block
-        (case_clause
-          (integer_literal))
-        (case_clause
-          (integer_literal)
-          (string)
-          (string))
-        (case_clause
-          (integer_literal)
-          (string))
-        (case_clause
-          (integer_literal)
-          (block
-            (string)))
-        (case_clause
-          (integer_literal))
-        (case_clause
-          (identifier)
-          (guard
-            (infix_expression
-              (identifier)
-              (operator_identifier)
-              (integer_literal))))
-        (case_clause
-          (identifier)
-          (guard
-            (infix_expression
-              (identifier)
-              (operator_identifier)
-              (integer_literal)))
-          (integer_literal))
-        (case_clause
-          (tuple_pattern
-            (tuple_pattern
-              (identifier)
-              (wildcard)))
-          (identifier))
-        (case_clause
-          (interpolated_string_expression
-            (identifier)
-            (interpolated_string
-              (interpolation
-                (identifier))
-              (interpolation
-                (identifier))))
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (identifier)))
-        (case_clause
-          (wildcard)
-          (val_definition
-            (identifier)
+    (function_body
+      (match_expression
+        (identifier)
+        (case_block
+          (case_clause
+            (integer_literal))
+          (case_clause
+            (integer_literal)
+            (string)
             (string))
-          (string))
-        (case_clause
-          (identifier)
-          (guard
+          (case_clause
+            (integer_literal)
+            (string))
+          (case_clause
+            (integer_literal)
+            (block
+              (string)))
+          (case_clause
+            (integer_literal))
+          (case_clause
+            (identifier)
+            (guard
+              (infix_expression
+                (identifier)
+                (operator_identifier)
+                (integer_literal))))
+          (case_clause
+            (identifier)
+            (guard
+              (infix_expression
+                (identifier)
+                (operator_identifier)
+                (integer_literal)))
+            (integer_literal))
+          (case_clause
+            (tuple_pattern
+              (tuple_pattern
+                (identifier)
+                (wildcard)))
             (identifier))
-          (identifier))))))
+          (case_clause
+            (interpolated_string_expression
+              (identifier)
+              (interpolated_string
+                (interpolation
+                  (identifier))
+                (interpolation
+                  (identifier))))
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (identifier)))
+          (case_clause
+            (wildcard)
+            (val_definition
+              (identifier)
+              (string))
+            (string))
+          (case_clause
+            (identifier)
+            (guard
+              (identifier))
+            (identifier)))))))
 
 ================================================================================
 Match expressions (Scala 3 syntax)
@@ -802,42 +814,43 @@ def matchTest(x: Int): String =
         (identifier)
         (type_identifier)))
     (type_identifier)
-    (indented_block
-      (match_expression
-        (identifier)
-        (indented_cases
-          (case_clause
-            (integer_literal))
-          (case_clause
-            (integer_literal)
-            (string)
-            (string))
-          (case_clause
-            (integer_literal)
-            (string))
-          (case_clause
-            (identifier)
-            (guard
-              (infix_expression
-                (identifier)
-                (operator_identifier)
-                (integer_literal)))
-            (val_definition
-              (identifier)
+    (function_body
+      (indented_block
+        (match_expression
+          (identifier)
+          (indented_cases
+            (case_clause
+              (integer_literal))
+            (case_clause
+              (integer_literal)
+              (string)
               (string))
-            (identifier))
-          (case_clause
-            (tuple_pattern
+            (case_clause
+              (integer_literal)
+              (string))
+            (case_clause
+              (identifier)
+              (guard
+                (infix_expression
+                  (identifier)
+                  (operator_identifier)
+                  (integer_literal)))
+              (val_definition
+                (identifier)
+                (string))
+              (identifier))
+            (case_clause
               (tuple_pattern
+                (tuple_pattern
+                  (identifier)
+                  (wildcard)))
+              (identifier))
+            (case_clause
+              (wildcard)
+              (val_definition
                 (identifier)
-                (wildcard)))
-            (identifier))
-          (case_clause
-            (wildcard)
-            (val_definition
-              (identifier)
-              (string))
-            (string)))))))
+                (string))
+              (string))))))))
 
 ================================================================================
 Field expressions
@@ -866,24 +879,25 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (assignment_expression
-            (field_expression
-              (identifier)
+        (function_body
+          (block
+            (assignment_expression
+              (field_expression
+                (identifier)
+                (identifier))
               (identifier))
-            (identifier))
-          (field_expression
             (field_expression
-              (identifier)
+              (field_expression
+                (identifier)
+                (identifier))
               (identifier))
-            (identifier))
-          (field_expression
             (field_expression
-              (identifier)
-              (identifier))
-            (comment)
-            (block_comment)
-            (identifier)))))))
+              (field_expression
+                (identifier)
+                (identifier))
+              (comment)
+              (block_comment)
+              (identifier))))))))
 
 ================================================================================
 Instance expressions
@@ -914,47 +928,50 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (val_definition
-            (identifier)
-            (instance_expression
-              (type_identifier)))
-          (val_definition
-            (identifier)
-            (instance_expression
-              (type_identifier)
-              (arguments
-                (identifier)
-                (identifier))))
-          (val_definition
-            (identifier)
-            (instance_expression
-              (type_identifier)
-              (template_body
-                (function_definition
+        (function_body
+          (block
+            (val_definition
+              (identifier)
+              (instance_expression
+                (type_identifier)))
+            (val_definition
+              (identifier)
+              (instance_expression
+                (type_identifier)
+                (arguments
                   (identifier)
-                  (integer_literal)))))
-          (val_definition
-            (identifier)
-            (instance_expression
-              (template_body
-                (function_definition
-                  (identifier)
-                  (integer_literal)))))
-          (val_definition
-            (identifier)
-            (instance_expression
-              (type_identifier)
-              (template_body)))
-          (val_definition
-            (identifier)
-            (instance_expression
-              (template_body
-                (string))))
-          (ascription_expression
-            (instance_expression
-              (type_identifier))
-            (type_identifier)))))))
+                  (identifier))))
+            (val_definition
+              (identifier)
+              (instance_expression
+                (type_identifier)
+                (template_body
+                  (function_definition
+                    (identifier)
+                    (function_body
+                      (integer_literal))))))
+            (val_definition
+              (identifier)
+              (instance_expression
+                (template_body
+                  (function_definition
+                    (identifier)
+                    (function_body
+                      (integer_literal))))))
+            (val_definition
+              (identifier)
+              (instance_expression
+                (type_identifier)
+                (template_body)))
+            (val_definition
+              (identifier)
+              (instance_expression
+                (template_body
+                  (string))))
+            (ascription_expression
+              (instance_expression
+                (type_identifier))
+              (type_identifier))))))))
 
 ================================================================================
 Infix expressions
@@ -977,24 +994,25 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (assignment_expression
-            (identifier)
+        (function_body
+          (block
+            (assignment_expression
+              (identifier)
+              (infix_expression
+                (identifier)
+                (identifier)
+                (identifier)))
             (infix_expression
-              (identifier)
-              (identifier)
-              (identifier)))
-          (infix_expression
+              (infix_expression
+                (identifier)
+                (operator_identifier)
+                (identifier))
+              (operator_identifier)
+              (identifier))
             (infix_expression
               (identifier)
               (operator_identifier)
-              (identifier))
-            (operator_identifier)
-            (identifier))
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (identifier)))))))
+              (identifier))))))))
 
 ================================================================================
 Prefix expressions
@@ -1016,14 +1034,15 @@ class C {
       (function_definition
         (identifier)
         (parameters)
-        (block
-          (prefix_expression
-            (identifier))
-          (infix_expression
+        (function_body
+          (block
             (prefix_expression
               (identifier))
-            (operator_identifier)
-            (identifier)))))))
+            (infix_expression
+              (prefix_expression
+                (identifier))
+              (operator_identifier)
+              (identifier))))))))
 
 ================================================================================
 Postfix expressions
@@ -1268,8 +1287,9 @@ def f(): Unit = { (
     (identifier)
     (parameters)
     (type_identifier)
-    (block
-      (unit))))
+    (function_body
+      (block
+        (unit)))))
 
 ================================================================================
 Return expressions
@@ -1284,7 +1304,8 @@ def g(a: A): B = { f(); return null.asInstanceOf[B] }
   (function_definition
     (identifier)
     (type_identifier)
-    (return_expression))
+    (function_body
+      (return_expression)))
   (function_definition
     (identifier)
     (parameters
@@ -1292,17 +1313,18 @@ def g(a: A): B = { f(); return null.asInstanceOf[B] }
         (identifier)
         (type_identifier)))
     (type_identifier)
-    (block
-      (call_expression
-        (identifier)
-        (arguments))
-      (return_expression
-        (generic_function
-          (field_expression
-            (null_literal)
-            (identifier))
-          (type_arguments
-            (type_identifier)))))))
+    (function_body
+      (block
+        (call_expression
+          (identifier)
+          (arguments))
+        (return_expression
+          (generic_function
+            (field_expression
+              (null_literal)
+              (identifier))
+            (type_arguments
+              (type_identifier))))))))
 
 ================================================================================
 While loops
@@ -1320,21 +1342,22 @@ def f = {
 (compilation_unit
   (function_definition
     (identifier)
-    (block
-      (while_expression
-        (parenthesized_expression
-          (identifier))
-        (call_expression
-          (identifier)
-          (arguments)))
-      (while_expression
-        (parenthesized_expression
-          (infix_expression
+    (function_body
+      (block
+        (while_expression
+          (parenthesized_expression
+            (identifier))
+          (call_expression
             (identifier)
-            (operator_identifier)
-            (identifier)))
-        (block
-          (identifier))))))
+            (arguments)))
+        (while_expression
+          (parenthesized_expression
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (identifier)))
+          (block
+            (identifier)))))))
 
 ================================================================================
 While loops (Scala 3 syntax)
@@ -1355,23 +1378,24 @@ def f: Unit =
   (function_definition
     (identifier)
     (type_identifier)
-    (indented_block
-      (while_expression
-        (identifier)
-        (call_expression
+    (function_body
+      (indented_block
+        (while_expression
           (identifier)
-          (arguments)))
-      (while_expression
-        (indented_block
-          (val_definition
+          (call_expression
             (identifier)
-            (integer_literal))
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (identifier)))
-        (indented_block
-          (unit))))))
+            (arguments)))
+        (while_expression
+          (indented_block
+            (val_definition
+              (identifier)
+              (integer_literal))
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (identifier)))
+          (indented_block
+            (unit)))))))
 
 ================================================================================
 Do-while loops
@@ -1391,35 +1415,36 @@ def f() = {
   (function_definition
     (identifier)
     (parameters)
-    (block
-      (do_while_expression
-        (call_expression
-          (identifier)
-          (arguments
-            (identifier)
-            (identifier)))
-        (parenthesized_expression
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (identifier))))
-      (do_while_expression
-        (block
+    (function_body
+      (block
+        (do_while_expression
           (call_expression
             (identifier)
             (arguments
               (identifier)
               (identifier)))
-          (call_expression
-            (identifier)
-            (arguments
+          (parenthesized_expression
+            (infix_expression
               (identifier)
+              (operator_identifier)
               (identifier))))
-        (parenthesized_expression
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (identifier)))))))
+        (do_while_expression
+          (block
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier)
+                (identifier)))
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier)
+                (identifier))))
+          (parenthesized_expression
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (identifier))))))))
 
 ================================================================================
 For comprehensions
@@ -1444,58 +1469,59 @@ def f() = {
   (function_definition
     (identifier)
     (parameters)
-    (block
-      (for_expression
-        (enumerators
-          (enumerator
-            (identifier)
-            (identifier)))
-        (infix_expression
-          (identifier)
-          (operator_identifier)
-          (integer_literal)))
-      (for_expression
-        (enumerators
-          (enumerator
-            (identifier)
-            (identifier))
-          (enumerator
-            (identifier)
-            (identifier)))
-        (call_expression
-          (identifier)
-          (arguments
-            (identifier)
-            (identifier))))
-      (for_expression
-        (enumerators
-          (enumerator
-            (identifier)
-            (identifier))
-          (enumerator
-            (identifier)
-            (infix_expression
+    (function_body
+      (block
+        (for_expression
+          (enumerators
+            (enumerator
               (identifier)
-              (operator_identifier)
               (identifier)))
-          (enumerator
+          (infix_expression
             (identifier)
-            (call_expression
-              (identifier)
-              (arguments))
-            (guard
-              (identifier)))
-          (enumerator
-            (tuple_pattern
+            (operator_identifier)
+            (integer_literal)))
+        (for_expression
+          (enumerators
+            (enumerator
               (identifier)
               (identifier))
-            (identifier)))
-        (block
+            (enumerator
+              (identifier)
+              (identifier)))
           (call_expression
             (identifier)
             (arguments
               (identifier)
-              (identifier))))))))
+              (identifier))))
+        (for_expression
+          (enumerators
+            (enumerator
+              (identifier)
+              (identifier))
+            (enumerator
+              (identifier)
+              (infix_expression
+                (identifier)
+                (operator_identifier)
+                (identifier)))
+            (enumerator
+              (identifier)
+              (call_expression
+                (identifier)
+                (arguments))
+              (guard
+                (identifier)))
+            (enumerator
+              (tuple_pattern
+                (identifier)
+                (identifier))
+              (identifier)))
+          (block
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier)
+                (identifier)))))))))
 
 ================================================================================
 For comprehensions (Scala 3 syntax)
@@ -1523,46 +1549,47 @@ def f(): Unit =
     (identifier)
     (parameters)
     (type_identifier)
-    (indented_block
-      (for_expression
-        (enumerators
-          (enumerator
-            (identifier)
-            (identifier)))
-        (infix_expression
-          (identifier)
-          (operator_identifier)
-          (integer_literal)))
-      (for_expression
-        (enumerators
-          (enumerator
-            (identifier)
-            (integer_literal))
-          (enumerator
-            (identifier)
-            (identifier))
-          (enumerator
-            (identifier)
-            (identifier)))
-        (indented_block
-          (call_expression
-            (identifier)
-            (arguments
+    (function_body
+      (indented_block
+        (for_expression
+          (enumerators
+            (enumerator
               (identifier)
-              (identifier)))))
-      (for_expression
-        (enumerators
-          (enumerator
+              (identifier)))
+          (infix_expression
             (identifier)
-            (identifier))
-          (enumerator
-            (guard
-              (call_expression
+            (operator_identifier)
+            (integer_literal)))
+        (for_expression
+          (enumerators
+            (enumerator
+              (identifier)
+              (integer_literal))
+            (enumerator
+              (identifier)
+              (identifier))
+            (enumerator
+              (identifier)
+              (identifier)))
+          (indented_block
+            (call_expression
+              (identifier)
+              (arguments
                 (identifier)
-                (arguments
-                  (identifier))))))
-        (indented_block
-          (unit))))))
+                (identifier)))))
+        (for_expression
+          (enumerators
+            (enumerator
+              (identifier)
+              (identifier))
+            (enumerator
+              (guard
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (identifier))))))
+          (indented_block
+            (unit)))))))
 
 ================================================================================
 Chained expressions
@@ -1586,36 +1613,37 @@ def main() {
   (function_definition
     (identifier)
     (parameters)
-    (block
-      (val_definition
-        (identifier)
+    (function_body
+      (block
+        (val_definition
+          (identifier)
+          (call_expression
+            (identifier)
+            (arguments
+              (integer_literal)
+              (integer_literal)
+              (integer_literal))))
         (call_expression
-          (identifier)
+          (field_expression
+            (identifier)
+            (identifier))
           (arguments
-            (integer_literal)
-            (integer_literal)
-            (integer_literal))))
-      (call_expression
+            (infix_expression
+              (wildcard)
+              (operator_identifier)
+              (integer_literal))))
+        (call_expression
+          (field_expression
+            (identifier)
+            (identifier))
+          (arguments
+            (infix_expression
+              (wildcard)
+              (operator_identifier)
+              (integer_literal))))
         (field_expression
           (identifier)
-          (identifier))
-        (arguments
-          (infix_expression
-            (wildcard)
-            (operator_identifier)
-            (integer_literal))))
-      (call_expression
-        (field_expression
-          (identifier)
-          (identifier))
-        (arguments
-          (infix_expression
-            (wildcard)
-            (operator_identifier)
-            (integer_literal))))
-      (field_expression
-        (identifier)
-        (identifier)))))
+          (identifier))))))
 
 ================================================================================
 Macros (Scala 2 syntax)
@@ -1635,11 +1663,12 @@ class Foo {
       (function_definition
         (identifier)
         (type_identifier)
-        (indented_block
-          (macro_body
-            (field_expression
-              (identifier)
-              (identifier))))))))
+        (function_body
+          (indented_block
+            (macro_body
+              (field_expression
+                (identifier)
+                (identifier)))))))))
 
 ================================================================================
 Macros (Scala 3 syntax)
@@ -1668,18 +1697,20 @@ class A:
             (identifier)
             (type_identifier)))
         (type_identifier)
-        (indented_block
-          (splice_expression
-            (call_expression
-              (identifier)
-              (arguments
-                (quote_expression
-                  (identifier)))))))
+        (function_body
+          (indented_block
+            (splice_expression
+              (call_expression
+                (identifier)
+                (arguments
+                  (quote_expression
+                    (identifier))))))))
       (function_definition
         (identifier)
-        (indented_block
-          (quote_expression
-            (identifier)))))))
+        (function_body
+          (indented_block
+            (quote_expression
+              (identifier))))))))
 
 ================================================================================
 Inline matches (Scala 3)
@@ -1695,13 +1726,14 @@ def hello =
 (compilation_unit
   (function_definition
     (identifier)
-    (indented_block
-      (match_expression
-        (inline_modifier)
-        (identifier)
-        (case_block
-          (case_clause
-            (integer_literal)))))))
+    (function_body
+      (indented_block
+        (match_expression
+          (inline_modifier)
+          (identifier)
+          (case_block
+            (case_clause
+              (integer_literal))))))))
 
 ================================================================================
 Inline if (Scala 3)
@@ -1715,13 +1747,14 @@ def hello =
 (compilation_unit
   (function_definition
     (identifier)
-    (indented_block
-      (if_expression
-        (inline_modifier)
-        (parenthesized_expression
-          (identifier))
-        (block)
-        (block)))))
+    (function_body
+      (indented_block
+        (if_expression
+          (inline_modifier)
+          (parenthesized_expression
+            (identifier))
+          (block)
+          (block))))))
 
 ================================================================================
 Nested inline if and match (Scala 3)
@@ -1739,16 +1772,17 @@ def hello =
 (compilation_unit
   (function_definition
     (identifier)
-    (indented_block
-      (if_expression
-        (inline_modifier)
-        (parenthesized_expression
-          (identifier))
-        (block
-          (match_expression
-            (inline_modifier)
-            (identifier)
-            (case_block)))))))
+    (function_body
+      (indented_block
+        (if_expression
+          (inline_modifier)
+          (parenthesized_expression
+            (identifier))
+          (block
+            (match_expression
+              (inline_modifier)
+              (identifier)
+              (case_block))))))))
 
 ================================================================================
 Top-level expressions

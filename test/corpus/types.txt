@@ -264,7 +264,8 @@ def a: F { val x: Int } = ???
           (type_identifier)
           (type_identifier))))
     (type_identifier)
-    (block))
+    (function_body
+      (block)))
   (class_definition
     (identifier)
     (extends_clause
@@ -309,7 +310,8 @@ def a: F { val x: Int } = ???
         (val_declaration
           (identifier)
           (type_identifier))))
-    (operator_identifier)))
+    (function_body
+      (operator_identifier))))
 
 ================================================================================
 Infix types
@@ -478,7 +480,8 @@ def showMax[X : {Ordering, Show}](x: X, y: X): String = ()
           (type_arguments
             (type_identifier)))))
     (type_identifier)
-    (unit))
+    (function_body
+      (unit)))
   (function_definition
     (identifier)
     (type_parameters
@@ -495,7 +498,8 @@ def showMax[X : {Ordering, Show}](x: X, y: X): String = ()
         (identifier)
         (type_identifier)))
     (type_identifier)
-    (unit)))
+    (function_body
+      (unit))))
 
 ================================================================================
 Projections
@@ -596,7 +600,8 @@ class A:
         (identifier)
         (singleton_type
           (identifier))
-        (identifier))
+        (function_body
+          (identifier)))
       (type_definition
         (type_identifier)
         (singleton_type
