@@ -2571,6 +2571,29 @@
     }
   },
   {
+    "type": "function_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "indented_block",
+          "named": true
+        },
+        {
+          "type": "indented_cases",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function_declaration",
     "named": true,
     "fields": {
@@ -2697,15 +2720,7 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
-            "named": true
-          },
-          {
-            "type": "indented_block",
-            "named": true
-          },
-          {
-            "type": "indented_cases",
+            "type": "function_body",
             "named": true
           }
         ]

@@ -15,25 +15,32 @@ Identifiers
 (compilation_unit
   (function_definition
     (identifier)
-    (operator_identifier))
+    (function_body
+      (operator_identifier)))
   (function_definition
     (identifier)
-    (boolean_literal))
+    (function_body
+      (boolean_literal)))
   (function_definition
     (identifier)
-    (operator_identifier))
+    (function_body
+      (operator_identifier)))
   (function_definition
     (identifier)
-    (operator_identifier))
+    (function_body
+      (operator_identifier)))
   (function_definition
     (identifier)
-    (operator_identifier))
+    (function_body
+      (operator_identifier)))
   (function_definition
     (identifier)
-    (operator_identifier))
+    (function_body
+      (operator_identifier)))
   (function_definition
     (identifier)
-    (operator_identifier)))
+    (function_body
+      (operator_identifier))))
 
 ================================================================================
 $ in identifier names
@@ -120,7 +127,8 @@ val x = y
       (operator_identifier)))
   (function_definition
     (operator_identifier)
-    (operator_identifier))
+    (function_body
+      (operator_identifier)))
   (val_definition
     (identifier)
     (field_expression
@@ -791,7 +799,8 @@ private[a] class D[T] private (x: T) {
           (access_modifier))
         (identifier)
         (parameters)
-        (integer_literal))))
+        (function_body
+          (integer_literal)))))
   (class_definition
     (modifiers
       (access_modifier
@@ -1153,15 +1162,18 @@ class A {
           (parameter
             (identifier)
             (type_identifier)))
-        (integer_literal))
-      (function_definition
-        (identifier)
-        (type_identifier)
-        (indented_block
+        (function_body
           (integer_literal)))
       (function_definition
         (identifier)
-        (unit))
+        (type_identifier)
+        (function_body
+          (indented_block
+            (integer_literal))))
+      (function_definition
+        (identifier)
+        (function_body
+          (unit)))
       (function_definition
         (identifier)
         (parameters
@@ -1177,12 +1189,14 @@ class A {
             (type_identifier)
             (operator_identifier)
             (type_identifier)))
-        (unit))
+        (function_body
+          (unit)))
       (function_definition
         (identifier)
         (parameters)
         (type_identifier)
-        (integer_literal)))))
+        (function_body
+          (integer_literal))))))
 
 ================================================================================
 Function definitions (Scala 3 syntax)
@@ -1212,18 +1226,19 @@ class A:
             (identifier)
             (type_identifier)))
         (type_identifier)
-        (indented_block
-          (val_definition
-            (identifier)
-            (integer_literal))
-          (val_definition
-            (identifier)
-            (integer_literal))
-          (infix_expression
-            (identifier)
-            (operator_identifier)
-            (identifier))
-          (comment)))
+        (function_body
+          (indented_block
+            (val_definition
+              (identifier)
+              (integer_literal))
+            (val_definition
+              (identifier)
+              (integer_literal))
+            (infix_expression
+              (identifier)
+              (operator_identifier)
+              (identifier))
+            (comment))))
       (function_declaration
         (identifier)
         (parameters
@@ -1240,7 +1255,7 @@ class A:
           (parameter
             (identifier)
             (type_identifier)))
-            (type_identifier))
+        (type_identifier))
       (function_declaration
         (identifier)
         (type_parameters
@@ -1299,7 +1314,8 @@ trait B:
         (function_definition
           (identifier)
           (type_identifier)
-          (integer_literal)))
+          (function_body
+            (integer_literal))))
       (extension_definition
         (type_parameters
           (identifier))
@@ -1309,7 +1325,8 @@ trait B:
             (type_identifier)))
         (function_definition
           (identifier)
-          (string)))))
+          (function_body
+            (string))))))
   (trait_definition
     (identifier)
     (template_body
@@ -1388,7 +1405,8 @@ object A:
                 (identifier)
                 (type_identifier)))
             (type_identifier)
-            (integer_literal))))
+            (function_body
+              (integer_literal)))))
       (given_definition
         (identifier)
         (generic_type
@@ -1403,7 +1421,8 @@ object A:
                 (identifier)
                 (type_identifier)))
             (type_identifier)
-            (integer_literal))))
+            (function_body
+              (integer_literal)))))
       (given_definition
         (generic_type
           (type_identifier)
@@ -1417,7 +1436,8 @@ object A:
                 (identifier)
                 (type_identifier)))
             (type_identifier)
-            (integer_literal))))
+            (function_body
+              (integer_literal)))))
       (given_definition
         (modifiers
           (access_modifier))
@@ -1449,7 +1469,8 @@ object A:
                   (type_arguments
                     (type_identifier)))))
             (type_identifier)
-            (integer_literal))))
+            (function_body
+              (integer_literal)))))
       (given_definition
         (identifier)
         (parameters
@@ -1498,7 +1519,8 @@ object A:
         (with_template_body
           (function_definition
             (identifier)
-            (unit))))
+            (function_body
+              (unit)))))
       (given_definition
         (type_parameters
           (identifier))
@@ -1517,7 +1539,8 @@ object A:
         (with_template_body
           (function_definition
             (identifier)
-            (unit))))
+            (function_body
+              (unit)))))
       (trait_definition
         (identifier)
         (template_body
@@ -1526,16 +1549,16 @@ object A:
             (generic_type
               (type_identifier)
               (type_arguments
-              (type_identifier))))))
-          (given_definition
-            (given_conditional
-              (parameter
-                (identifier)
-                (type_identifier)))
-            (type_identifier)
-            (call_expression
-              (identifier)
-              (arguments))))))
+                (type_identifier))))))
+      (given_definition
+        (given_conditional
+          (parameter
+            (identifier)
+            (type_identifier)))
+        (type_identifier)
+        (call_expression
+          (identifier)
+          (arguments))))))
 
 ================================================================================
 Top-level Definitions (Scala 3 syntax)
@@ -1556,12 +1579,14 @@ def a() = 1
       (function_definition
         (identifier)
         (parameters)
-        (indented_block
-          (unit)))))
+        (function_body
+          (indented_block
+            (unit))))))
   (function_definition
     (identifier)
     (parameters)
-    (integer_literal)))
+    (function_body
+      (integer_literal))))
 
 ================================================================================
 Initialization expressions
@@ -1616,7 +1641,8 @@ def mkLines(header: String, indented: Boolean = false, repeated: Long = 0L): Str
         (type_identifier)
         (integer_literal)))
     (type_identifier)
-    (block)))
+    (function_body
+      (block))))
 
 ================================================================================
 Enums (Scala 3)
@@ -1764,7 +1790,8 @@ inline def mkLines(inline header: String, indented: Boolean = false): String = {
         (type_identifier)
         (boolean_literal)))
     (type_identifier)
-    (block)))
+    (function_body
+      (block))))
 
 ================================================================================
 Inline val (Scala 3)
@@ -1781,12 +1808,13 @@ inline def test() =
       (inline_modifier))
     (identifier)
     (parameters)
-    (indented_block
-      (val_definition
-        (modifiers
-          (inline_modifier))
-        (identifier)
-        (boolean_literal)))))
+    (function_body
+      (indented_block
+        (val_definition
+          (modifiers
+            (inline_modifier))
+          (identifier)
+          (boolean_literal))))))
 
 ================================================================================
 Inline given (Scala 3)
@@ -1824,7 +1852,8 @@ object Test:
           (infix_modifier)
           (access_modifier))
         (identifier)
-        (integer_literal)))))
+        (function_body
+          (integer_literal))))))
 
 ================================================================================
 Open classes (Scala 3)
@@ -1848,7 +1877,8 @@ end Test
     (template_body
       (function_definition
         (identifier)
-        (integer_literal)))))
+        (function_body
+          (integer_literal))))))
 
 ================================================================================
 Traits (Scala 3)
@@ -1871,7 +1901,8 @@ transparent trait Kind:
         (type_identifier))
       (function_definition
         (identifier)
-        (integer_literal)))))
+        (function_body
+          (integer_literal))))))
 
 ================================================================================
 Exports (Scala 3)

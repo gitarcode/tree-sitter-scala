@@ -161,47 +161,48 @@ def showNotification(notification: Notification): String = {
         (identifier)
         (type_identifier)))
     (type_identifier)
-    (block
-      (match_expression
-        (identifier)
-        (case_block
-          (case_clause
-            (case_class_pattern
-              (type_identifier)
-              (identifier)
-              (identifier)
-              (wildcard))
-            (interpolated_string_expression
-              (identifier)
-              (interpolated_string
-                (interpolation
-                  (identifier))
-                (interpolation
-                  (identifier)))))
-          (case_clause
-            (case_class_pattern
-              (type_identifier)
-              (identifier)
-              (identifier))
-            (interpolated_string_expression
-              (identifier)
-              (interpolated_string
-                (interpolation
-                  (identifier))
-                (interpolation
-                  (identifier)))))
-          (case_clause
-            (case_class_pattern
-              (type_identifier)
-              (identifier)
-              (identifier))
-            (interpolated_string_expression
-              (identifier)
-              (interpolated_string
-                (interpolation
-                  (identifier))
-                (interpolation
-                  (identifier))))))))))
+    (function_body
+      (block
+        (match_expression
+          (identifier)
+          (case_block
+            (case_clause
+              (case_class_pattern
+                (type_identifier)
+                (identifier)
+                (identifier)
+                (wildcard))
+              (interpolated_string_expression
+                (identifier)
+                (interpolated_string
+                  (interpolation
+                    (identifier))
+                  (interpolation
+                    (identifier)))))
+            (case_clause
+              (case_class_pattern
+                (type_identifier)
+                (identifier)
+                (identifier))
+              (interpolated_string_expression
+                (identifier)
+                (interpolated_string
+                  (interpolation
+                    (identifier))
+                  (interpolation
+                    (identifier)))))
+            (case_clause
+              (case_class_pattern
+                (type_identifier)
+                (identifier)
+                (identifier))
+              (interpolated_string_expression
+                (identifier)
+                (interpolated_string
+                  (interpolation
+                    (identifier))
+                  (interpolation
+                    (identifier)))))))))))
 
 ================================================================================
 Case class patterns (Scala 3 syntax)
@@ -253,21 +254,22 @@ def first(x: Seq[Int]) = x match {
           (type_identifier)
           (type_arguments
             (type_identifier)))))
-    (match_expression
-      (identifier)
-      (case_block
-        (case_clause
-          (infix_pattern
-            (identifier)
-            (operator_identifier)
-            (wildcard))
-          (call_expression
-            (identifier)
-            (arguments
-              (identifier))))
-        (case_clause
-          (wildcard)
-          (identifier))))))
+    (function_body
+      (match_expression
+        (identifier)
+        (case_block
+          (case_clause
+            (infix_pattern
+              (identifier)
+              (operator_identifier)
+              (wildcard))
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier))))
+          (case_clause
+            (wildcard)
+            (identifier)))))))
 
 ================================================================================
 Capture patterns
@@ -350,20 +352,21 @@ def foo =
 (compilation_unit
   (function_definition
     (identifier)
-    (indented_block
-      (match_expression
-        (identifier)
-        (indented_cases
-          (case_clause
-            (quote_expression
-              (identifier))
-            (call_expression
-              (identifier)
-              (arguments
-                (boolean_literal))))
-          (case_clause
-            (wildcard)
-            (identifier)))))))
+    (function_body
+      (indented_block
+        (match_expression
+          (identifier)
+          (indented_cases
+            (case_clause
+              (quote_expression
+                (identifier))
+              (call_expression
+                (identifier)
+                (arguments
+                  (boolean_literal))))
+            (case_clause
+              (wildcard)
+              (identifier))))))))
 
 ================================================================================
 Given pattern (Scala 3 syntax)
