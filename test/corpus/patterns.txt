@@ -11,14 +11,16 @@ val x = y match {
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (match_expression
       (identifier)
       (case_block
         (case_clause
           (alternative_pattern
             (integer_literal)
-            (identifier))
+            (identifier_pattern
+              (identifier)))
           (identifier))
         (case_clause
           (alternative_pattern
@@ -43,7 +45,8 @@ val x = y match {
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (match_expression
       (identifier)
       (case_block
@@ -54,7 +57,8 @@ val x = y match {
           (integer_literal))
         (case_clause
           (typed_pattern
-            (identifier)
+            (identifier_pattern
+              (identifier))
             (compound_type
               (type_identifier)
               (type_identifier)))
@@ -89,8 +93,10 @@ val x = y match {
 (compilation_unit
   (val_definition
     (tuple_pattern
-      (identifier)
-      (identifier))
+      (identifier_pattern
+        (identifier))
+      (identifier_pattern
+        (identifier)))
     (if_expression
       (parenthesized_expression
         (identifier))
@@ -101,14 +107,17 @@ val x = y match {
         (identifier)
         (identifier))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (match_expression
       (identifier)
       (case_block
         (case_clause
           (tuple_pattern
-            (identifier)
-            (identifier))
+            (identifier_pattern
+              (identifier))
+            (identifier_pattern
+              (identifier)))
           (identifier))))))
 
 ================================================================================
@@ -122,7 +131,8 @@ val x = y match
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (match_expression
       (identifier)
       (indented_cases
@@ -130,10 +140,12 @@ val x = y match
           (named_tuple_pattern
             (named_pattern
               (identifier)
-              (identifier))
+              (identifier_pattern
+                (identifier)))
             (named_pattern
               (identifier)
-              (identifier)))
+              (identifier_pattern
+                (identifier))))
           (operator_identifier))))))
 
 ================================================================================
@@ -169,8 +181,10 @@ def showNotification(notification: Notification): String = {
             (case_clause
               (case_class_pattern
                 (type_identifier)
-                (identifier)
-                (identifier)
+                (identifier_pattern
+                  (identifier))
+                (identifier_pattern
+                  (identifier))
                 (wildcard))
               (interpolated_string_expression
                 (identifier)
@@ -182,8 +196,10 @@ def showNotification(notification: Notification): String = {
             (case_clause
               (case_class_pattern
                 (type_identifier)
-                (identifier)
-                (identifier))
+                (identifier_pattern
+                  (identifier))
+                (identifier_pattern
+                  (identifier)))
               (interpolated_string_expression
                 (identifier)
                 (interpolated_string
@@ -194,8 +210,10 @@ def showNotification(notification: Notification): String = {
             (case_clause
               (case_class_pattern
                 (type_identifier)
-                (identifier)
-                (identifier))
+                (identifier_pattern
+                  (identifier))
+                (identifier_pattern
+                  (identifier)))
               (interpolated_string_expression
                 (identifier)
                 (interpolated_string
@@ -260,7 +278,8 @@ def first(x: Seq[Int]) = x match {
         (case_block
           (case_clause
             (infix_pattern
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (operator_identifier)
               (wildcard))
             (call_expression
@@ -286,7 +305,8 @@ val x = y match {
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (match_expression
       (identifier)
       (case_block
@@ -307,7 +327,8 @@ val x = y match {
                 (tuple_pattern
                   (capture_pattern
                     (identifier)
-                    (identifier))
+                    (identifier_pattern
+                      (identifier)))
                   (typed_pattern
                     (wildcard)
                     (type_identifier))))))
@@ -319,10 +340,13 @@ val x = y match {
                 (identifier)
                 (tuple_pattern
                   (alternative_pattern
-                    (identifier)
-                    (identifier))))
+                    (identifier_pattern
+                      (identifier))
+                    (identifier_pattern
+                      (identifier)))))
               (operator_identifier)
-              (identifier))
+              (identifier_pattern
+                (identifier)))
             (operator_identifier)
             (string))
           (integer_literal))
@@ -330,7 +354,8 @@ val x = y match {
           (case_class_pattern
             (type_identifier)
             (typed_pattern
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (type_identifier))
             (repeat_pattern
               (capture_pattern

@@ -15,10 +15,10 @@
   name: (identifier) @local.definition)
 
 (val_definition
-  pattern: (identifier) @local.definition)
+  pattern: (identifier_pattern (identifier) @local.definition))
 
 (var_definition
-  pattern: (identifier) @local.definition)
+  pattern: (identifier_pattern (identifier) @local.definition))
 
 (val_declaration
   name: (identifier) @local.definition)

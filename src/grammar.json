@@ -4930,7 +4930,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_identifier"
+          "name": "identifier_pattern"
         },
         {
           "type": "SYMBOL",
@@ -4989,6 +4989,10 @@
           "name": "repeat_pattern"
         }
       ]
+    },
+    "identifier_pattern": {
+      "type": "SYMBOL",
+      "name": "_identifier"
     },
     "case_class_pattern": {
       "type": "SEQ",
@@ -8065,8 +8069,12 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_pattern"
+              "type": "FIELD",
+              "name": "pattern",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_pattern"
+              }
             },
             {
               "type": "CHOICE",
@@ -8082,8 +8090,12 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "expression"
+              "type": "FIELD",
+              "name": "expression",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
             },
             {
               "type": "CHOICE",
@@ -8337,19 +8349,6 @@
       "parameter"
     ],
     [
-      "_simple_expression",
-      "binding",
-      "tuple_pattern"
-    ],
-    [
-      "_simple_expression",
-      "tuple_pattern"
-    ],
-    [
-      "_simple_expression",
-      "_type_identifier"
-    ],
-    [
       "_if_condition",
       "_simple_expression"
     ],
@@ -8379,6 +8378,14 @@
       "binding",
       "_simple_expression",
       "_type_identifier"
+    ],
+    [
+      "val_declaration",
+      "identifier_pattern"
+    ],
+    [
+      "var_declaration",
+      "identifier_pattern"
     ]
   ],
   "precedences": [

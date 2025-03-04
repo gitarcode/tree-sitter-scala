@@ -96,9 +96,6 @@ module.exports = grammar({
     [$._variant_type_parameter, $.type_lambda],
     // 'given'  '('  operator_identifier  ':'  _type  •  ','  …
     [$.name_and_type, $.parameter],
-    [$._simple_expression, $.binding, $.tuple_pattern],
-    [$._simple_expression, $.tuple_pattern],
-    [$._simple_expression, $._type_identifier],
     // 'if'  parenthesized_expression  •  '{'  …
     [$._if_condition, $._simple_expression],
     [$.block, $._braced_template_body1],
@@ -107,6 +104,8 @@ module.exports = grammar({
     [$.lambda_expression, $.self_type, $._type_identifier],
     [$.lambda_expression, $._type_identifier],
     [$.binding, $._simple_expression, $._type_identifier],
+    [$.val_declaration, $.identifier_pattern],
+    [$.var_declaration, $.identifier_pattern]
   ],
 
   word: $ => $._alpha_identifier,
@@ -1003,7 +1002,7 @@ module.exports = grammar({
 
     _pattern: $ =>
       choice(
-        $._identifier,
+        $.identifier_pattern,
         $.stable_identifier,
         $.interpolated_string_expression,
         $.capture_pattern,
@@ -1019,6 +1018,8 @@ module.exports = grammar({
         $.wildcard,
         $.repeat_pattern,
       ),
+
+    identifier_pattern: $ => $._identifier,  
 
     case_class_pattern: $ =>
       seq(
@@ -1739,9 +1740,9 @@ module.exports = grammar({
       choice(
         seq(
           optional("case"),
-          $._pattern,
+          field("pattern", $._pattern),
           choice("<-", "="),
-          $.expression,
+          field("expression", $.expression),
           optional($.guard),
         ),
         repeat1($.guard),

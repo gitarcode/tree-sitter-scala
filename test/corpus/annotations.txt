@@ -47,7 +47,8 @@ class A(x: String) {
           (type_identifier))
         (annotation
           (type_identifier))
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (identifier))
       (function_definition
         (annotation
