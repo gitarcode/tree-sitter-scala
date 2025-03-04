@@ -110,6 +110,59 @@ module.exports = grammar({
 
   word: $ => $._alpha_identifier,
 
+  reserved: {
+    global: $ => [
+      "abstract",
+      "case",
+      // interferes with externals
+      // "catch",
+      "class",
+      "def",
+      "do",
+      // interferes with externals
+      // "else",
+      // interferes with externals
+      // "extends",
+      "false",
+      "final",
+      // interferes with externals
+      // "finally",
+      "for",
+      // prevents parser generation
+      // "forSome",
+      "if",
+      "implicit",
+      "import",
+      "lazy",
+      "macro",
+      "match",
+      "new",
+      "null",
+      "object",
+      "override",
+      "package",
+      "private",
+      "protected",
+      "return",
+      "sealed",
+      // prevents parser generation
+      // "super",
+      // causes parse errors, needs investigation
+      //"this",
+      "throw",
+      "trait",
+      "try",
+      "true",
+      "type",
+      "val",
+      "var",
+      "while",
+      // interferes with externals
+      // "with",
+      "yield",
+    ],
+  },
+
   rules: {
     // TopStats          ::=  TopStat {semi TopStat}
     compilation_unit: $ =>
@@ -1019,7 +1072,7 @@ module.exports = grammar({
         $.repeat_pattern,
       ),
 
-    identifier_pattern: $ => $._identifier,  
+    identifier_pattern: $ => field("identifier", $._identifier),  
 
     case_class_pattern: $ =>
       seq(
