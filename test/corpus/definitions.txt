@@ -238,6 +238,96 @@ package object d extends A {
         (string)))))
 
 ================================================================================
+Nested packages
+================================================================================
+
+package users {
+  package administrators {
+    class NormalUser
+  }
+  package normalusers {
+    class NormalUser
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(compilation_unit
+  (package_clause
+    (package_identifier
+      (identifier))
+    (package_body
+      (package_clause
+        (package_identifier
+          (identifier))
+        (package_body
+          (class_definition
+            (identifier))))
+      (package_clause
+        (package_identifier
+          (identifier))
+        (package_body
+          (class_definition
+            (identifier)))))))
+
+================================================================================
+Nested packages (Scala 3)
+================================================================================
+
+package users:
+  package administrators:
+    class NormalUser
+
+  package normalusers:
+    class NormalUser
+
+--------------------------------------------------------------------------------
+
+(compilation_unit
+  (package_clause
+    (package_identifier
+      (identifier))
+    (package_body
+      (package_clause
+        (package_identifier
+          (identifier))
+        (package_body
+          (class_definition
+            (identifier))))
+      (package_clause
+        (package_identifier
+          (identifier))
+        (package_body
+          (class_definition
+            (identifier)))))))
+
+================================================================================
+Package with package object
+================================================================================
+
+package c {
+  package object d {
+    val hello: String = "there"
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(compilation_unit
+  (package_clause
+    (package_identifier
+      (identifier))
+    (package_body
+      (package_object
+        (identifier)
+        (template_body
+          (val_definition
+            (identifier_pattern
+              (identifier))
+            (type_identifier)
+            (string)))))))
+
+================================================================================
 Imports
 ================================================================================
 
