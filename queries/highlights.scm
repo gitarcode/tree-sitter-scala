@@ -42,10 +42,10 @@
 ;; val/var definitions/declarations
 
 (val_definition
-  pattern: (identifier) @variable)
+  pattern: (identifier_pattern (identifier) @variable))
 
 (var_definition
-  pattern: (identifier) @variable)
+  pattern: (identifier_pattern (identifier) @variable))
 
 (val_declaration
   name: (identifier) @variable)

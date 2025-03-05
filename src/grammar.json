@@ -4930,7 +4930,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_identifier"
+          "name": "identifier_pattern"
         },
         {
           "type": "SYMBOL",
@@ -4989,6 +4989,14 @@
           "name": "repeat_pattern"
         }
       ]
+    },
+    "identifier_pattern": {
+      "type": "FIELD",
+      "name": "identifier",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_identifier"
+      }
     },
     "case_class_pattern": {
       "type": "SEQ",
@@ -8065,8 +8073,12 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_pattern"
+              "type": "FIELD",
+              "name": "pattern",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_pattern"
+              }
             },
             {
               "type": "CHOICE",
@@ -8082,8 +8094,12 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "expression"
+              "type": "FIELD",
+              "name": "expression",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
             },
             {
               "type": "CHOICE",
@@ -8337,19 +8353,6 @@
       "parameter"
     ],
     [
-      "_simple_expression",
-      "binding",
-      "tuple_pattern"
-    ],
-    [
-      "_simple_expression",
-      "tuple_pattern"
-    ],
-    [
-      "_simple_expression",
-      "_type_identifier"
-    ],
-    [
       "_if_condition",
       "_simple_expression"
     ],
@@ -8379,6 +8382,14 @@
       "binding",
       "_simple_expression",
       "_type_identifier"
+    ],
+    [
+      "val_declaration",
+      "identifier_pattern"
+    ],
+    [
+      "var_declaration",
+      "identifier_pattern"
     ]
   ],
   "precedences": [
@@ -8488,5 +8499,136 @@
     "_definition",
     "_pattern"
   ],
-  "reserved": {}
+  "reserved": {
+    "global": [
+      {
+        "type": "STRING",
+        "value": "abstract"
+      },
+      {
+        "type": "STRING",
+        "value": "case"
+      },
+      {
+        "type": "STRING",
+        "value": "class"
+      },
+      {
+        "type": "STRING",
+        "value": "def"
+      },
+      {
+        "type": "STRING",
+        "value": "do"
+      },
+      {
+        "type": "STRING",
+        "value": "false"
+      },
+      {
+        "type": "STRING",
+        "value": "final"
+      },
+      {
+        "type": "STRING",
+        "value": "for"
+      },
+      {
+        "type": "STRING",
+        "value": "if"
+      },
+      {
+        "type": "STRING",
+        "value": "implicit"
+      },
+      {
+        "type": "STRING",
+        "value": "import"
+      },
+      {
+        "type": "STRING",
+        "value": "lazy"
+      },
+      {
+        "type": "STRING",
+        "value": "macro"
+      },
+      {
+        "type": "STRING",
+        "value": "match"
+      },
+      {
+        "type": "STRING",
+        "value": "new"
+      },
+      {
+        "type": "STRING",
+        "value": "null"
+      },
+      {
+        "type": "STRING",
+        "value": "object"
+      },
+      {
+        "type": "STRING",
+        "value": "override"
+      },
+      {
+        "type": "STRING",
+        "value": "package"
+      },
+      {
+        "type": "STRING",
+        "value": "private"
+      },
+      {
+        "type": "STRING",
+        "value": "protected"
+      },
+      {
+        "type": "STRING",
+        "value": "return"
+      },
+      {
+        "type": "STRING",
+        "value": "sealed"
+      },
+      {
+        "type": "STRING",
+        "value": "throw"
+      },
+      {
+        "type": "STRING",
+        "value": "trait"
+      },
+      {
+        "type": "STRING",
+        "value": "try"
+      },
+      {
+        "type": "STRING",
+        "value": "true"
+      },
+      {
+        "type": "STRING",
+        "value": "type"
+      },
+      {
+        "type": "STRING",
+        "value": "val"
+      },
+      {
+        "type": "STRING",
+        "value": "var"
+      },
+      {
+        "type": "STRING",
+        "value": "while"
+      },
+      {
+        "type": "STRING",
+        "value": "yield"
+      }
+    ]
+  }
 }

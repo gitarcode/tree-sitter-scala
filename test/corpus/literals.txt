@@ -16,13 +16,16 @@ val multiLineString2 = """""""
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (string))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (string))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (string)))
 
 ================================================================================
@@ -51,7 +54,8 @@ val string8 = s"$"$a"
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
@@ -61,14 +65,16 @@ val string8 = s"$"$a"
           (block
             (identifier))))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
         (interpolation
           (identifier)))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
@@ -76,7 +82,8 @@ val string8 = s"$"$a"
           (block
             (identifier))))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
@@ -84,7 +91,8 @@ val string8 = s"$"$a"
           (block
             (identifier))))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
@@ -96,29 +104,31 @@ val string8 = s"$"$a"
         (interpolation
           (identifier)))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
-        (interpolated_string
-          (interpolation
-            (identifier))
-          (interpolation
-            (identifier)))))
+      (interpolated_string
+        (interpolation
+          (identifier))
+        (interpolation
+          (identifier)))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
         (interpolation
           (identifier)))))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (interpolated_string_expression
       (identifier)
       (interpolated_string
         (interpolation
           (identifier))))))
-
 
 ================================================================================
 Integer literals
@@ -139,34 +149,44 @@ val l6 = 0xFF_FF_FF
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (integer_literal)))
 
 ================================================================================
@@ -182,16 +202,20 @@ val d1 = .314D
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (floating_point_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (floating_point_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (floating_point_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (floating_point_literal)))
 
 ================================================================================
@@ -206,7 +230,8 @@ def foo(a: Boolean = false) = a && true
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (boolean_literal))
   (function_definition
     (identifier)
@@ -239,16 +264,20 @@ def foo(a: Char = 'c') = a + 'd'
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (character_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (character_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (character_literal))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (character_literal))
   (function_definition
     (identifier)
@@ -274,7 +303,8 @@ lazy val nullObject: String = null
 (compilation_unit
   (val_definition
     (modifiers)
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (type_identifier)
     (null_literal)))
 
@@ -292,7 +322,8 @@ val x = (
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (tuple_expression
       (integer_literal)
       (integer_literal)

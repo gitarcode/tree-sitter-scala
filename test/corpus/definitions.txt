@@ -103,7 +103,8 @@ val x = y
       (type_arguments
         (type_identifier))))
   (val_definition
-    (operator_identifier)
+    (identifier_pattern
+      (operator_identifier))
     (field_expression
       (field_expression
         (field_expression
@@ -112,14 +113,16 @@ val x = y
         (identifier))
       (operator_identifier)))
   (val_definition
-    (operator_identifier)
+    (identifier_pattern
+      (operator_identifier))
     (field_expression
       (field_expression
         (identifier)
         (identifier))
       (operator_identifier)))
   (val_definition
-    (operator_identifier)
+    (identifier_pattern
+      (operator_identifier))
     (field_expression
       (field_expression
         (identifier)
@@ -130,12 +133,14 @@ val x = y
     (function_body
       (operator_identifier)))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (field_expression
       (identifier)
       (operator_identifier)))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (identifier))
   (comment)
   (comment)
@@ -227,7 +232,8 @@ package object d extends A {
       (type_identifier))
     (template_body
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (type_identifier)
         (string)))))
 
@@ -475,7 +481,8 @@ object O5 {
     (extends_clause
       (structural_type
         (val_definition
-          (identifier)
+          (identifier_pattern
+            (identifier))
           (type_identifier)
           (identifier)))))
   (object_definition
@@ -936,10 +943,12 @@ class A {
     (identifier)
     (template_body
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (integer_literal))
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (type_identifier)
         (string))
       (val_definition
@@ -994,7 +1003,8 @@ class A {
     (identifier)
     (template_body
       (var_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (type_identifier)
         (integer_literal)))))
 
@@ -1015,15 +1025,18 @@ class A:
     (identifier)
     (template_body
       (var_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (type_identifier)
         (integer_literal))
       (var_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (type_identifier)
         (indented_block
           (val_definition
-            (identifier)
+            (identifier_pattern
+              (identifier))
             (integer_literal))
           (identifier))))))
 
@@ -1229,10 +1242,12 @@ class A:
         (function_body
           (indented_block
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (integer_literal))
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (integer_literal))
             (infix_expression
               (identifier)
@@ -1495,7 +1510,8 @@ object A:
             (type_identifier)))
         (indented_cases
           (case_clause
-            (identifier)
+            (identifier_pattern
+              (identifier))
             (string))))
       (given_definition
         (parameters
@@ -1813,7 +1829,8 @@ inline def test() =
         (val_definition
           (modifiers
             (inline_modifier))
-          (identifier)
+          (identifier_pattern
+            (identifier))
           (boolean_literal))))))
 
 ================================================================================

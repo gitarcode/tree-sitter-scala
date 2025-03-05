@@ -86,7 +86,8 @@ class C {
                 (case_clause
                   (tuple_pattern
                     (tuple_pattern
-                      (identifier)
+                      (identifier_pattern
+                        (identifier))
                       (wildcard)))
                   (identifier))))))))))
 
@@ -207,7 +208,8 @@ class C:
         (colon_argument
           (indented_block
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (integer_literal))
             (call_expression
               (identifier)
@@ -220,7 +222,8 @@ class C:
         (colon_argument
           (indented_cases
             (case_clause
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier))
             (comment))))
       (ascription_expression
@@ -456,7 +459,8 @@ class C:
             (if_expression
               (indented_block
                 (val_definition
-                  (identifier)
+                  (identifier_pattern
+                    (identifier))
                   (boolean_literal))
                 (identifier))
               (indented_block
@@ -550,7 +554,8 @@ def main() {
             (case_block
               (case_clause
                 (typed_pattern
-                  (identifier)
+                  (identifier_pattern
+                    (identifier))
                   (type_identifier))
                 (call_expression
                   (identifier)
@@ -561,7 +566,8 @@ def main() {
               (case_clause
                 (case_class_pattern
                   (type_identifier)
-                  (identifier))
+                  (identifier_pattern
+                    (identifier)))
                 (throw_expression
                   (instance_expression
                     (type_identifier)
@@ -579,7 +585,8 @@ def main() {
           (catch_clause
             (case_block
               (case_clause
-                (identifier)
+                (identifier_pattern
+                  (identifier))
                 (call_expression
                   (identifier)
                   (arguments
@@ -647,7 +654,8 @@ def main(): Unit =
             (indented_cases
               (case_clause
                 (typed_pattern
-                  (identifier)
+                  (identifier_pattern
+                    (identifier))
                   (type_identifier))
                 (call_expression
                   (identifier)
@@ -658,7 +666,8 @@ def main(): Unit =
               (case_clause
                 (case_class_pattern
                   (type_identifier)
-                  (identifier))
+                  (identifier_pattern
+                    (identifier)))
                 (throw_expression
                   (instance_expression
                     (type_identifier)
@@ -676,7 +685,8 @@ def main(): Unit =
           (identifier)
           (catch_clause
             (typed_pattern
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (type_identifier))
             (identifier))
           (finally_clause
@@ -685,7 +695,8 @@ def main(): Unit =
           (identifier)
           (catch_clause
             (typed_pattern
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (type_identifier))
             (identifier)))))))
 
@@ -743,14 +754,16 @@ def matchTest(x: Int): String = x match {
           (case_clause
             (integer_literal))
           (case_clause
-            (identifier)
+            (identifier_pattern
+              (identifier))
             (guard
               (infix_expression
                 (identifier)
                 (operator_identifier)
                 (integer_literal))))
           (case_clause
-            (identifier)
+            (identifier_pattern
+              (identifier))
             (guard
               (infix_expression
                 (identifier)
@@ -760,7 +773,8 @@ def matchTest(x: Int): String = x match {
           (case_clause
             (tuple_pattern
               (tuple_pattern
-                (identifier)
+                (identifier_pattern
+                  (identifier))
                 (wildcard)))
             (identifier))
           (case_clause
@@ -778,11 +792,13 @@ def matchTest(x: Int): String = x match {
           (case_clause
             (wildcard)
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (string))
             (string))
           (case_clause
-            (identifier)
+            (identifier_pattern
+              (identifier))
             (guard
               (identifier))
             (identifier)))))))
@@ -829,26 +845,30 @@ def matchTest(x: Int): String =
               (integer_literal)
               (string))
             (case_clause
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (guard
                 (infix_expression
                   (identifier)
                   (operator_identifier)
                   (integer_literal)))
               (val_definition
-                (identifier)
+                (identifier_pattern
+                  (identifier))
                 (string))
               (identifier))
             (case_clause
               (tuple_pattern
                 (tuple_pattern
-                  (identifier)
+                  (identifier_pattern
+                    (identifier))
                   (wildcard)))
               (identifier))
             (case_clause
               (wildcard)
               (val_definition
-                (identifier)
+                (identifier_pattern
+                  (identifier))
                 (string))
               (string))))))))
 
@@ -931,18 +951,21 @@ class C {
         (function_body
           (block
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (instance_expression
                 (type_identifier)))
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (instance_expression
                 (type_identifier)
                 (arguments
                   (identifier)
                   (identifier))))
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (instance_expression
                 (type_identifier)
                 (template_body
@@ -951,7 +974,8 @@ class C {
                     (function_body
                       (integer_literal))))))
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (instance_expression
                 (template_body
                   (function_definition
@@ -959,12 +983,14 @@ class C {
                     (function_body
                       (integer_literal))))))
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (instance_expression
                 (type_identifier)
                 (template_body)))
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (instance_expression
                 (template_body
                   (string))))
@@ -1060,12 +1086,14 @@ object O {
     (identifier)
     (template_body
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (postfix_expression
           (string)
           (identifier)))
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (postfix_expression
           (infix_expression
             (integer_literal)
@@ -1092,12 +1120,14 @@ object O {
     (identifier)
     (template_body
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (ascription_expression
           (identifier)
           (type_identifier)))
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (ascription_expression
           (integer_literal)
           (type_identifier)))
@@ -1145,7 +1175,8 @@ object O {
     (identifier)
     (template_body
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (lambda_expression
           (identifier)
           (infix_expression
@@ -1153,7 +1184,8 @@ object O {
             (operator_identifier)
             (integer_literal))))
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (lambda_expression
           (bindings
             (binding
@@ -1168,7 +1200,8 @@ object O {
               (operator_identifier)
               (identifier)))))
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (lambda_expression
           (wildcard)
           (integer_literal)))
@@ -1179,7 +1212,8 @@ object O {
             (identifier)
             (indented_block
               (val_definition
-                (identifier)
+                (identifier_pattern
+                  (identifier))
                 (infix_expression
                   (integer_literal)
                   (operator_identifier)
@@ -1190,7 +1224,8 @@ object O {
           (identifier)
           (indented_block
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (infix_expression
                 (integer_literal)
                 (operator_identifier)
@@ -1240,7 +1275,8 @@ object O:
     (identifier)
     (template_body
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (lambda_expression
           (bindings
             (binding
@@ -1253,7 +1289,8 @@ object O:
                 (type_identifier)))
             (identifier))))
       (val_definition
-        (identifier)
+        (identifier_pattern
+          (identifier))
         (type_identifier)
         (lambda_expression
           (type_parameters
@@ -1281,7 +1318,8 @@ def f(): Unit = { (
 
 (compilation_unit
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (unit))
   (function_definition
     (identifier)
@@ -1388,7 +1426,8 @@ def f: Unit =
         (while_expression
           (indented_block
             (val_definition
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (integer_literal))
             (infix_expression
               (identifier)
@@ -1474,7 +1513,8 @@ def f() = {
         (for_expression
           (enumerators
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier)))
           (infix_expression
             (identifier)
@@ -1483,10 +1523,12 @@ def f() = {
         (for_expression
           (enumerators
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier))
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier)))
           (call_expression
             (identifier)
@@ -1496,16 +1538,19 @@ def f() = {
         (for_expression
           (enumerators
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier))
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (infix_expression
                 (identifier)
                 (operator_identifier)
                 (identifier)))
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (call_expression
                 (identifier)
                 (arguments))
@@ -1513,8 +1558,10 @@ def f() = {
                 (identifier)))
             (enumerator
               (tuple_pattern
-                (identifier)
-                (identifier))
+                (identifier_pattern
+                  (identifier))
+                (identifier_pattern
+                  (identifier)))
               (identifier)))
           (block
             (call_expression
@@ -1554,7 +1601,8 @@ def f(): Unit =
         (for_expression
           (enumerators
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier)))
           (infix_expression
             (identifier)
@@ -1563,13 +1611,16 @@ def f(): Unit =
         (for_expression
           (enumerators
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (integer_literal))
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier))
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier)))
           (indented_block
             (call_expression
@@ -1580,7 +1631,8 @@ def f(): Unit =
         (for_expression
           (enumerators
             (enumerator
-              (identifier)
+              (identifier_pattern
+                (identifier))
               (identifier))
             (enumerator
               (guard
@@ -1616,7 +1668,8 @@ def main() {
     (function_body
       (block
         (val_definition
-          (identifier)
+          (identifier_pattern
+            (identifier))
           (call_expression
             (identifier)
             (arguments
@@ -1801,13 +1854,15 @@ addSbtPlugin("foo" % "bar" % "0.1")
 
 (compilation_unit
   (var_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (string))
   (assignment_expression
     (identifier)
     (string))
   (val_definition
-    (identifier)
+    (identifier_pattern
+      (identifier))
     (infix_expression
       (identifier)
       (operator_identifier)

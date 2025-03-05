@@ -98,7 +98,7 @@
         "named": true
       },
       {
-        "type": "identifier",
+        "type": "identifier_pattern",
         "named": true
       },
       {
@@ -119,10 +119,6 @@
       },
       {
         "type": "null_literal",
-        "named": true
-      },
-      {
-        "type": "operator_identifier",
         "named": true
       },
       {
@@ -2099,19 +2095,32 @@
   {
     "type": "enumerator",
     "named": true,
-    "fields": {},
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_pattern",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "_pattern",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
         {
           "type": "guard",
           "named": true
@@ -3448,6 +3457,26 @@
     "fields": {}
   },
   {
+    "type": "identifier_pattern",
+    "named": true,
+    "fields": {
+      "identifier": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "identifiers",
     "named": true,
     "fields": {},
@@ -4761,6 +4790,14 @@
       "types": [
         {
           "type": "_pattern",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "operator_identifier",
           "named": true
         }
       ]
