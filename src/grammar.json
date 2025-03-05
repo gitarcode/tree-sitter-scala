@@ -5131,7 +5131,7 @@
     },
     "identifier_pattern": {
       "type": "FIELD",
-      "name": "identifier",
+      "name": "id",
       "content": {
         "type": "SYMBOL",
         "name": "_identifier"

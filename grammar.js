@@ -1078,7 +1078,7 @@ module.exports = grammar({
         $.repeat_pattern,
       ),
 
-    identifier_pattern: $ => field("identifier", $._identifier),  
+    identifier_pattern: $ => field("id", $._identifier),  
 
     case_class_pattern: $ =>
       seq(
