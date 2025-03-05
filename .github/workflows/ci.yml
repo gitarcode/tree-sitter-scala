@@ -58,7 +58,7 @@ jobs:
 
       - name: Parse sample files
         uses: tree-sitter/parse-action@v4
-        continue-on-error: true
+        continue-on-error: false
         id: parse-files
         with:
           files: examples/**

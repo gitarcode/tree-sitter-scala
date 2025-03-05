@@ -165,7 +165,7 @@ package c {
   (package_clause
     (package_identifier
       (identifier))
-    (template_body
+    (package_body
       (object_definition
         (identifier)))))
 
@@ -205,13 +205,13 @@ end d
   (package_clause
     (package_identifier
       (identifier))
-    (template_body
+    (package_body
       (object_definition
         (identifier))))
   (package_clause
     (package_identifier
       (identifier))
-    (template_body
+    (package_body
       (object_definition
         (identifier)))))
 
