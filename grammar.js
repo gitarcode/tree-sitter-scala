@@ -260,15 +260,21 @@ module.exports = grammar({
         seq(
           "package",
           field("name", $.package_identifier),
-          // This is slightly more permissive than the EBNF in that it allows any
-          // kind of delcaration inside of the package blocks. As we're more
-          // concerned with the structure rather than the validity of the program
-          // we'll allow it.
-          field("body", optional($.template_body)),
+          field("body", optional($.package_body)),
         ),
       ),
 
     package_identifier: $ => prec.right(sep1(".", $._identifier)),
+
+    package_body: $ =>
+      choice(
+        prec.left(PREC.control, seq(":", $._indent, optional(trailingSep1($._semicolon, $._top_level_definition)), $._outdent)),
+        seq(
+          "{",
+          optional(trailingSep1($._semicolon, $._top_level_definition)),
+          "}",
+        ),
+      ),
 
     package_object: $ => seq("package", "object", $._object_definition),
 
