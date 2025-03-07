@@ -1200,7 +1200,7 @@ module.exports = grammar({
 
     lambda_parameters: $ => choice(
       $.bindings,
-      seq(optional("implicit"), field("single_identifier", $._identifier)),
+      seq(optional("implicit"), field("single_parameter", $._identifier)),
       $.wildcard,
     ),
 

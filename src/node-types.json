@@ -4250,7 +4250,7 @@
     "type": "lambda_parameters",
     "named": true,
     "fields": {
-      "single_identifier": {
+      "single_parameter": {
         "multiple": false,
         "required": false,
         "types": [
