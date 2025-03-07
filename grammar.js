@@ -1419,11 +1419,14 @@ module.exports = grammar({
             choice(
               $.prefix_expression,
               $._simple_expression,
-              seq(":", $.colon_argument),
+              $._colon_argument  
             ),
           ),
         ),
       ),
+
+    _colon_argument: $ => 
+      seq(":", $.colon_argument),
 
     /**
      * PostfixExpr       ::=  InfixExpr [id]
