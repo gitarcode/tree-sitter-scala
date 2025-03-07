@@ -5790,8 +5790,12 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_identifier"
+              "type": "FIELD",
+              "name": "single_identifier",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_identifier"
+              }
             }
           ]
         },
@@ -8456,16 +8460,8 @@
       "instance_expression"
     ],
     [
-      "_simple_expression",
-      "lambda_expression"
-    ],
-    [
       "self_type",
       "_simple_expression"
-    ],
-    [
-      "self_type",
-      "lambda_expression"
     ],
     [
       "_class_definition"
@@ -8510,15 +8506,6 @@
     ],
     [
       "_simple_expression",
-      "_type_identifier"
-    ],
-    [
-      "lambda_expression",
-      "self_type",
-      "_type_identifier"
-    ],
-    [
-      "lambda_expression",
       "_type_identifier"
     ],
     [

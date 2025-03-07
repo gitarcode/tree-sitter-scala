@@ -73,13 +73,8 @@ module.exports = grammar({
     [$.match_expression],
     [$._given_constructor, $._type_identifier],
     [$.instance_expression],
-    // In case of: 'extension'  _indent  '{'  'case'  operator_identifier  'if'  operator_identifier  •  '=>'  …
-    // we treat `operator_identifier` as `simple_expression`
-    [$._simple_expression, $.lambda_expression],
     // 'package'  package_identifier  '{'  operator_identifier  •  ':'  …
     [$.self_type, $._simple_expression],
-    // 'package'  package_identifier  '{'  operator_identifier  '=>'  •  'enum'  …
-    [$.self_type, $.lambda_expression],
     // 'class'  _class_constructor  •  _automatic_semicolon  …
     [$._class_definition],
     // 'class'  operator_identifier  •  _automatic_semicolon  …
@@ -101,8 +96,6 @@ module.exports = grammar({
     [$.block, $._braced_template_body1],
     [$._simple_expression, $.self_type, $._type_identifier],
     [$._simple_expression, $._type_identifier],
-    [$.lambda_expression, $.self_type, $._type_identifier],
-    [$.lambda_expression, $._type_identifier],
     [$.binding, $._simple_expression, $._type_identifier],
     [$.val_declaration, $.identifier_pattern],
     [$.var_declaration, $.identifier_pattern],
@@ -1207,7 +1200,7 @@ module.exports = grammar({
 
     lambda_parameters: $ => choice(
       $.bindings,
-      seq(optional("implicit"), $._identifier),
+      seq(optional("implicit"), field("single_identifier", $._identifier)),
       $.wildcard,
     ),
 
