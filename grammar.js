@@ -1338,7 +1338,6 @@ module.exports = grammar({
           PREC.colon_call,
           seq(
             field("function", $._postfix_expression_choice),
-            ":",
             field("arguments", $.colon_argument),
           ),
         ),
@@ -1352,6 +1351,7 @@ module.exports = grammar({
       prec.left(
         PREC.colon_call,
         seq(
+          ":",
           optional(
             field(
               "lambda_start",
@@ -1419,7 +1419,7 @@ module.exports = grammar({
             choice(
               $.prefix_expression,
               $._simple_expression,
-              seq(":", $.colon_argument),
+              $.colon_argument,
             ),
           ),
         ),

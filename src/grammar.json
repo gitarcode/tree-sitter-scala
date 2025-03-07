@@ -6426,10 +6426,6 @@
                 }
               },
               {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
                 "type": "FIELD",
                 "name": "arguments",
                 "content": {
@@ -6448,6 +6444,10 @@
       "content": {
         "type": "SEQ",
         "members": [
+          {
+            "type": "STRING",
+            "value": ":"
+          },
           {
             "type": "CHOICE",
             "members": [
@@ -6667,17 +6667,8 @@
                   "name": "_simple_expression"
                 },
                 {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": ":"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "colon_argument"
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "colon_argument"
                 }
               ]
             }
