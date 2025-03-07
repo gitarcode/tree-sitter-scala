@@ -105,7 +105,11 @@ module.exports = grammar({
     [$.lambda_expression, $._type_identifier],
     [$.binding, $._simple_expression, $._type_identifier],
     [$.val_declaration, $.identifier_pattern],
-    [$.var_declaration, $.identifier_pattern]
+    [$.var_declaration, $.identifier_pattern],
+    [$.self_type, $.lambda_parameters],
+    [$._simple_expression, $.lambda_parameters],
+    [$.self_type, $._type_identifier, $.lambda_parameters],
+    [$._type_identifier, $.lambda_parameters]
   ],
 
   word: $ => $._alpha_identifier,
@@ -1195,18 +1199,17 @@ module.exports = grammar({
       prec.right(
         seq(
           optional(seq(field("type_parameters", $.type_parameters), "=>")),
-          field(
-            "parameters",
-            choice(
-              $.bindings,
-              seq(optional("implicit"), $._identifier),
-              $.wildcard,
-            ),
-          ),
+          field("parameters", $.lambda_parameters),
           choice("=>", "?=>"),
           $._indentable_expression,
         ),
       ),
+
+    lambda_parameters: $ => choice(
+      $.bindings,
+      seq(optional("implicit"), $._identifier),
+      $.wildcard,
+    ),
 
     /*
      *  ::=  [‘inline’] ‘if’ ‘(’ Expr ‘)’ {nl} Expr [[semi] ‘else’ Expr]

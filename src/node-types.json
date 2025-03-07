@@ -4207,27 +4207,11 @@
     "named": true,
     "fields": {
       "parameters": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "bindings",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "implicit",
-            "named": false
-          },
-          {
-            "type": "operator_identifier",
-            "named": true
-          },
-          {
-            "type": "wildcard",
+            "type": "lambda_parameters",
             "named": true
           }
         ]
@@ -4257,6 +4241,33 @@
         },
         {
           "type": "indented_cases",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lambda_parameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bindings",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "operator_identifier",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]

@@ -5743,38 +5743,8 @@
             "type": "FIELD",
             "name": "parameters",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "bindings"
-                },
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "implicit"
-                        },
-                        {
-                          "type": "BLANK"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_identifier"
-                    }
-                  ]
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "wildcard"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "lambda_parameters"
             }
           },
           {
@@ -5796,6 +5766,40 @@
           }
         ]
       }
+    },
+    "lambda_parameters": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "bindings"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "implicit"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_identifier"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "wildcard"
+        }
+      ]
     },
     "if_expression": {
       "type": "SEQ",
@@ -8529,6 +8533,23 @@
     [
       "var_declaration",
       "identifier_pattern"
+    ],
+    [
+      "self_type",
+      "lambda_parameters"
+    ],
+    [
+      "_simple_expression",
+      "lambda_parameters"
+    ],
+    [
+      "self_type",
+      "_type_identifier",
+      "lambda_parameters"
+    ],
+    [
+      "_type_identifier",
+      "lambda_parameters"
     ]
   ],
   "precedences": [

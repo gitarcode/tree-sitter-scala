@@ -53,7 +53,8 @@ class C {
                 (identifier))
               (arguments
                 (lambda_expression
-                  (identifier)
+                  (lambda_parameters
+                    (identifier))
                   (infix_expression
                     (identifier)
                     (operator_identifier)
@@ -72,7 +73,8 @@ class C {
                 (identifier))
               (block
                 (lambda_expression
-                  (identifier)
+                  (lambda_parameters
+                    (identifier))
                   (infix_expression
                     (identifier)
                     (operator_identifier)
@@ -188,7 +190,8 @@ class C:
         (colon_argument
           (indented_block
             (lambda_expression
-              (identifier)
+              (lambda_parameters
+                (identifier))
               (indented_block
                 (infix_expression
                   (identifier)
@@ -1178,7 +1181,8 @@ object O {
         (identifier_pattern
           (identifier))
         (lambda_expression
-          (identifier)
+          (lambda_parameters
+            (identifier))
           (infix_expression
             (identifier)
             (operator_identifier)
@@ -1187,13 +1191,14 @@ object O {
         (identifier_pattern
           (identifier))
         (lambda_expression
-          (bindings
-            (binding
-              (identifier)
-              (type_identifier))
-            (binding
-              (identifier)
-              (type_identifier)))
+          (lambda_parameters
+            (bindings
+              (binding
+                (identifier)
+                (type_identifier))
+              (binding
+                (identifier)
+                (type_identifier))))
           (block
             (infix_expression
               (identifier)
@@ -1203,13 +1208,15 @@ object O {
         (identifier_pattern
           (identifier))
         (lambda_expression
-          (wildcard)
+          (lambda_parameters
+            (wildcard))
           (integer_literal)))
       (call_expression
         (identifier)
         (block
           (lambda_expression
-            (identifier)
+            (lambda_parameters
+              (identifier))
             (indented_block
               (val_definition
                 (identifier_pattern
@@ -1221,7 +1228,8 @@ object O {
               (identifier)))))
       (block
         (lambda_expression
-          (identifier)
+          (lambda_parameters
+            (identifier))
           (indented_block
             (val_definition
               (identifier_pattern
@@ -1236,7 +1244,8 @@ object O {
               (identifier)))))
       (block
         (lambda_expression
-          (identifier)
+          (lambda_parameters
+            (identifier))
           (indented_block
             (if_expression
               (parenthesized_expression
@@ -1246,17 +1255,20 @@ object O {
                 (identifier))))))
       (block
         (lambda_expression
-          (identifier)
+          (lambda_parameters
+            (identifier))
           (lambda_expression
-            (identifier)
+            (lambda_parameters
+              (identifier))
             (identifier))))
       (block
         (lambda_expression
-          (bindings
-            (binding
-              (wildcard))
-            (binding
-              (identifier)))
+          (lambda_parameters
+            (bindings
+              (binding
+                (wildcard))
+              (binding
+                (identifier))))
           (identifier))))))
 
 ================================================================================
@@ -1278,15 +1290,17 @@ object O:
         (identifier_pattern
           (identifier))
         (lambda_expression
-          (bindings
-            (binding
-              (identifier)
-              (type_identifier)))
-          (lambda_expression
+          (lambda_parameters
             (bindings
               (binding
                 (identifier)
-                (type_identifier)))
+                (type_identifier))))
+          (lambda_expression
+            (lambda_parameters
+              (bindings
+                (binding
+                  (identifier)
+                  (type_identifier))))
             (identifier))))
       (val_definition
         (identifier_pattern
@@ -1297,13 +1311,14 @@ object O:
             (identifier)
             (context_bound
               (type_identifier)))
-          (bindings
-            (binding
-              (identifier)
-              (type_identifier))
-            (binding
-              (identifier)
-              (type_identifier)))
+          (lambda_parameters
+            (bindings
+              (binding
+                (identifier)
+                (type_identifier))
+              (binding
+                (identifier)
+                (type_identifier))))
           (operator_identifier))))))
 
 ================================================================================
