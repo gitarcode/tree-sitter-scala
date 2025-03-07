@@ -6667,27 +6667,23 @@
                   "name": "_simple_expression"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_colon_argument"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ":"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "colon_argument"
+                    }
+                  ]
                 }
               ]
             }
           }
         ]
       }
-    },
-    "_colon_argument": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "colon_argument"
-        }
-      ]
     },
     "postfix_expression": {
       "type": "PREC_LEFT",
