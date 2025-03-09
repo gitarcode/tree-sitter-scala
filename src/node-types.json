@@ -3609,25 +3609,7 @@
     "type": "import_expression",
     "named": true,
     "fields": {
-      "path": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "operator_identifier",
-            "named": true
-          }
-        ]
-      },
-      "selector": {
+      "import_selector": {
         "multiple": true,
         "required": false,
         "types": [
@@ -3650,6 +3632,24 @@
           {
             "type": "}",
             "named": false
+          }
+        ]
+      },
+      "path": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator_identifier",
+            "named": true
           }
         ]
       }

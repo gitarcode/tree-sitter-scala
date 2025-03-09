@@ -834,7 +834,7 @@
             },
             {
               "type": "FIELD",
-              "name": "selector",
+              "name": "import_selector",
               "content": {
                 "type": "SYMBOL",
                 "name": "_import_selector"

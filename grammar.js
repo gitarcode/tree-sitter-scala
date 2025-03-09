@@ -283,7 +283,7 @@ module.exports = grammar({
       seq(
         field("path", seq($._identifier, repeat(seq(".", $._identifier)))),
         ".",
-        field("selector", $._import_selector)
+        field("import_selector", $._import_selector)
       ),
       $.named_selector
     ),
