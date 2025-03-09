@@ -523,7 +523,7 @@ module.exports = grammar({
         field("type", $._type),
       ),
 
-    _start_val: $ => seq(repeat($.annotation), optional($.modifiers), "val"),
+    _start_val: $ => seq(repeat($.annotation), optional(field("modifiers", $.modifiers)), "val"),
 
     var_declaration: $ =>
       seq(

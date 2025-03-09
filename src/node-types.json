@@ -7270,6 +7270,16 @@
     "type": "val_declaration",
     "named": true,
     "fields": {
+      "modifiers": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "modifiers",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": true,
         "required": true,
@@ -7362,10 +7372,6 @@
         {
           "type": "annotation",
           "named": true
-        },
-        {
-          "type": "modifiers",
-          "named": true
         }
       ]
     }
@@ -7374,6 +7380,16 @@
     "type": "val_definition",
     "named": true,
     "fields": {
+      "modifiers": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "modifiers",
+            "named": true
+          }
+        ]
+      },
       "pattern": {
         "multiple": false,
         "required": true,
@@ -7483,10 +7499,6 @@
       "types": [
         {
           "type": "annotation",
-          "named": true
-        },
-        {
-          "type": "modifiers",
           "named": true
         }
       ]
