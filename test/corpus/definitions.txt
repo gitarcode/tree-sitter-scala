@@ -893,7 +893,8 @@ private[a] class D[T] private (x: T) {
     (template_body
       (function_definition
         (modifiers
-          (access_modifier))
+          (access_modifier
+            (access_modifier_modifier)))
         (identifier)
         (parameters)
         (function_body
@@ -901,12 +902,13 @@ private[a] class D[T] private (x: T) {
   (class_definition
     (modifiers
       (access_modifier
-        (access_qualifier
-          (identifier))))
+        (access_modifier_modifier)
+        (identifier)))
     (identifier)
     (type_parameters
       (identifier))
-    (access_modifier)
+    (access_modifier
+      (access_modifier_modifier))
     (class_parameters
       (class_parameter
         (identifier)
@@ -915,8 +917,8 @@ private[a] class D[T] private (x: T) {
       (function_declaration
         (modifiers
           (access_modifier
-            (access_qualifier
-              (identifier))))
+            (access_modifier_modifier)
+            (identifier)))
         (identifier)
         (type_identifier)))))
 
@@ -1545,7 +1547,8 @@ object A:
               (integer_literal)))))
       (given_definition
         (modifiers
-          (access_modifier))
+          (access_modifier
+            (access_modifier_modifier)))
         (identifier)
         (type_parameters
           (identifier))
@@ -1957,7 +1960,8 @@ object Test:
         (modifiers
           (inline_modifier)
           (infix_modifier)
-          (access_modifier))
+          (access_modifier
+            (access_modifier_modifier)))
         (identifier)
         (function_body
           (integer_literal))))))

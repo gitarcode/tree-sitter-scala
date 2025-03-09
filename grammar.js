@@ -144,8 +144,6 @@ module.exports = grammar({
       "sealed",
       // prevents parser generation
       // "super",
-      // causes parse errors, needs investigation
-      //"this",
       "throw",
       "trait",
       "try",
@@ -739,12 +737,16 @@ module.exports = grammar({
         ),
       ),
 
-    access_modifier: $ =>
-      prec.left(
-        seq(choice("private", "protected"), optional($.access_qualifier)),
-      ),
+    access_modifier: $ => seq(
+      field("modifier", $.access_modifier_modifier), 
+      optional($._access_qualifier)
+    ),
 
-    access_qualifier: $ => seq("[", $._identifier, "]"),
+    access_modifier_modifier: $ => choice(
+      "private", "protected"
+    ),
+
+    _access_qualifier: $ => seq("[", field("qualifier", $._identifier), "]"),
 
     inline_modifier: $ => prec("mod", "inline"),
     infix_modifier: $ => prec("mod", "infix"),

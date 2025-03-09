@@ -304,36 +304,37 @@
   {
     "type": "access_modifier",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "access_qualifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "modifier": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "access_modifier_modifier",
+            "named": true
+          }
+        ]
+      },
+      "qualifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator_identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
-    "type": "access_qualifier",
+    "type": "access_modifier_modifier",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "operator_identifier",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "alternative_pattern",
