@@ -144,8 +144,6 @@ module.exports = grammar({
       "sealed",
       // prevents parser generation
       // "super",
-      // causes parse errors, needs investigation
-      //"this",
       "throw",
       "trait",
       "try",
@@ -285,7 +283,7 @@ module.exports = grammar({
       seq(
         field("path", seq($._identifier, repeat(seq(".", $._identifier)))),
         ".",
-        field("selector", $._import_selector)
+        field("import_selector", $._import_selector)
       ),
       $.named_selector
     ),
@@ -309,7 +307,7 @@ module.exports = grammar({
     object_definition: $ =>
       seq(
         repeat($.annotation),
-        optional($.modifiers),
+        optional(field("modifiers", $.modifiers)),
         optional("case"),
         "object",
         $._object_definition,
@@ -328,7 +326,7 @@ module.exports = grammar({
     class_definition: $ =>
       seq(
         repeat($.annotation),
-        optional($.modifiers),
+        optional(field("modifiers", $.modifiers)),
         optional("case"),
         "class",
         $._class_definition,
@@ -361,15 +359,12 @@ module.exports = grammar({
         ),
       ),
 
-    trait_definition: $ =>
-      prec.left(
-        seq(
-          repeat($.annotation),
-          optional($.modifiers),
-          "trait",
-          $._class_definition,
-        ),
-      ),
+    trait_definition: $ => seq(
+      repeat($.annotation),
+      optional(field("modifiers", $.modifiers)),
+      "trait",
+      $._class_definition,
+    ),
 
     // The EBNF makes a distinction between function type parameters and other
     // type parameters as you can't specify variance on function type
@@ -525,7 +520,7 @@ module.exports = grammar({
         field("type", $._type),
       ),
 
-    _start_val: $ => seq(repeat($.annotation), optional($.modifiers), "val"),
+    _start_val: $ => seq(repeat($.annotation), optional(field("modifiers", $.modifiers)), "val"),
 
     var_declaration: $ =>
       seq(
@@ -544,7 +539,7 @@ module.exports = grammar({
         field("value", $._indentable_expression),
       ),
 
-    _start_var: $ => seq(repeat($.annotation), optional($.modifiers), "var"),
+    _start_var: $ => seq(repeat($.annotation), optional(field("modifiers", $.modifiers)), "var"),
 
     type_definition: $ =>
       prec.left(
@@ -582,7 +577,7 @@ module.exports = grammar({
       prec.left(
         seq(
           repeat($.annotation),
-          optional($.modifiers),
+          optional(field("modifiers", $.modifiers)),
           "def",
           $._function_constructor,
           optional(seq(":", field("return_type", $._type))),
@@ -739,12 +734,16 @@ module.exports = grammar({
         ),
       ),
 
-    access_modifier: $ =>
-      prec.left(
-        seq(choice("private", "protected"), optional($.access_qualifier)),
-      ),
+    access_modifier: $ => seq(
+      field("modifier", $.access_modifier_modifier), 
+      optional($._access_qualifier)
+    ),
 
-    access_qualifier: $ => seq("[", $._identifier, "]"),
+    access_modifier_modifier: $ => choice(
+      "private", "protected"
+    ),
+
+    _access_qualifier: $ => seq("[", field("qualifier", $._identifier), "]"),
 
     inline_modifier: $ => prec("mod", "inline"),
     infix_modifier: $ => prec("mod", "infix"),
@@ -815,7 +814,7 @@ module.exports = grammar({
     class_parameter: $ =>
       seq(
         repeat($.annotation),
-        optional($.modifiers),
+        optional(field("modifiers", $.modifiers)),
         optional(choice("val", "var")),
         field("name", $._identifier),
         optional(seq(":", field("type", $._param_type))),

@@ -627,7 +627,8 @@ opaque type B >: Test <: Help = String
     (type_identifier))
   (type_definition
     (modifiers
-      (access_modifier))
+      (access_modifier
+        (access_modifier_modifier)))
     (opaque_modifier)
     (type_identifier)
     (type_identifier))
