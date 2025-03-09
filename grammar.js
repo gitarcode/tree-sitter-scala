@@ -544,7 +544,7 @@ module.exports = grammar({
         field("value", $._indentable_expression),
       ),
 
-    _start_var: $ => seq(repeat($.annotation), optional($.modifiers), "var"),
+    _start_var: $ => seq(repeat($.annotation), optional(field("modifiers", $.modifiers)), "var"),
 
     type_definition: $ =>
       prec.left(
