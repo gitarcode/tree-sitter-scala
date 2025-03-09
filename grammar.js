@@ -307,7 +307,7 @@ module.exports = grammar({
     object_definition: $ =>
       seq(
         repeat($.annotation),
-        optional($.modifiers),
+        optional(field("modifiers", $.modifiers)),
         optional("case"),
         "object",
         $._object_definition,
@@ -326,7 +326,7 @@ module.exports = grammar({
     class_definition: $ =>
       seq(
         repeat($.annotation),
-        optional($.modifiers),
+        optional(field("modifiers", $.modifiers)),
         optional("case"),
         "class",
         $._class_definition,
@@ -363,7 +363,7 @@ module.exports = grammar({
       prec.left(
         seq(
           repeat($.annotation),
-          optional($.modifiers),
+          optional(field("modifiers", $.modifiers)),
           "trait",
           $._class_definition,
         ),
@@ -580,7 +580,7 @@ module.exports = grammar({
       prec.left(
         seq(
           repeat($.annotation),
-          optional($.modifiers),
+          optional(field("modifiers", $.modifiers)),
           "def",
           $._function_constructor,
           optional(seq(":", field("return_type", $._type))),
@@ -817,7 +817,7 @@ module.exports = grammar({
     class_parameter: $ =>
       seq(
         repeat($.annotation),
-        optional($.modifiers),
+        optional(field("modifiers", $.modifiers)),
         optional(choice("val", "var")),
         field("name", $._identifier),
         optional(seq(":", field("type", $._param_type))),
