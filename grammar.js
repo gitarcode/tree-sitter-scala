@@ -359,15 +359,12 @@ module.exports = grammar({
         ),
       ),
 
-    trait_definition: $ =>
-      prec.left(
-        seq(
-          repeat($.annotation),
-          optional(field("modifiers", $.modifiers)),
-          "trait",
-          $._class_definition,
-        ),
-      ),
+    trait_definition: $ => seq(
+      repeat($.annotation),
+      optional(field("modifiers", $.modifiers)),
+      "trait",
+      $._class_definition,
+    ),
 
     // The EBNF makes a distinction between function type parameters and other
     // type parameters as you can't specify variance on function type
