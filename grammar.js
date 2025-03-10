@@ -285,7 +285,7 @@ module.exports = grammar({
         ".",
         field("import_selector", $._import_selector)
       ),
-      $.named_selector
+      field("named_selector", $.named_selector),
     ),
 
     _import_selector: $ => choice(

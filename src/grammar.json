@@ -843,8 +843,12 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "named_selector"
+          "type": "FIELD",
+          "name": "named_selector",
+          "content": {
+            "type": "SYMBOL",
+            "name": "named_selector"
+          }
         }
       ]
     },

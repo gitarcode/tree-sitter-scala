@@ -3635,6 +3635,16 @@
           }
         ]
       },
+      "named_selector": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "named_selector",
+            "named": true
+          }
+        ]
+      },
       "path": {
         "multiple": true,
         "required": false,
@@ -3653,16 +3663,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "named_selector",
-          "named": true
-        }
-      ]
     }
   },
   {
