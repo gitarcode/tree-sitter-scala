@@ -3614,7 +3614,7 @@
         "required": false,
         "types": [
           {
-            "type": "import_selectors",
+            "type": "multiple_selectors",
             "named": true
           },
           {
@@ -3655,25 +3655,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "import_selectors",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "named_selector",
-          "named": true
-        },
-        {
-          "type": "wildcard_selector",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -4727,6 +4708,25 @@
         },
         {
           "type": "transparent_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multiple_selectors",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "named_selector",
+          "named": true
+        },
+        {
+          "type": "wildcard_selector",
           "named": true
         }
       ]

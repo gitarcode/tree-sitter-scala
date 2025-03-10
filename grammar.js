@@ -291,7 +291,7 @@ module.exports = grammar({
     _import_selector: $ => choice(
       $.named_selector,
       $.wildcard_selector,
-      $.import_selectors
+      $.multiple_selectors
     ),
 
     named_selector: $ => seq(
@@ -299,7 +299,7 @@ module.exports = grammar({
       optional(seq(choice("as", "=>"), choice(field("alias", $._identifier), "_"))),
     ),
 
-    import_selectors: $ => seq(
+    multiple_selectors: $ => seq(
       "{", 
       sep1(",", choice($.named_selector, $.wildcard_selector)), 
       optional(","), 

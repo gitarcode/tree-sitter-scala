@@ -865,7 +865,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "import_selectors"
+          "name": "multiple_selectors"
         }
       ]
     },
@@ -925,7 +925,7 @@
         }
       ]
     },
-    "import_selectors": {
+    "multiple_selectors": {
       "type": "SEQ",
       "members": [
         {

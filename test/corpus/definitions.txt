@@ -361,7 +361,7 @@ import a.{ :: }
     (import_expression
       (identifier)
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (identifier))
         (named_selector
@@ -371,7 +371,7 @@ import a.{ :: }
   (import_declaration
     (import_expression
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (identifier)))))
   (import_declaration
@@ -382,7 +382,7 @@ import a.{ :: }
   (import_declaration
     (import_expression
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (operator_identifier))))))
 
@@ -446,7 +446,7 @@ import tools.given
       (identifier)
       (identifier)
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (wildcard_selector)
         (wildcard_selector))))
   (import_declaration
@@ -468,7 +468,7 @@ import tools.nsc.classpath.{given Test, given Test2, Test3}
       (identifier)
       (identifier)
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (wildcard_selector
           (type_identifier))
         (wildcard_selector
@@ -491,7 +491,7 @@ import lang.System.lineSeparator as _
     (import_expression
       (identifier)
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (identifier)
           (identifier)))))
@@ -523,7 +523,7 @@ import lang.System.{lineSeparator => _}
     (import_expression
       (identifier)
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (identifier)
           (identifier)))))
@@ -531,7 +531,7 @@ import lang.System.{lineSeparator => _}
     (import_expression
       (identifier)
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (identifier))))))
 
@@ -2043,7 +2043,7 @@ export printUnit.Test as _
   (export_declaration
     (import_expression
       (identifier)
-      (import_selectors
+      (multiple_selectors
         (named_selector
           (identifier))
         (wildcard_selector))))
