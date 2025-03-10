@@ -291,12 +291,19 @@ module.exports = grammar({
     _import_selector: $ => choice(
       $.named_selector,
       $.wildcard_selector,
-      seq("{", sep1(",", choice($.named_selector, $.wildcard_selector)), optional(","), "}")
+      $.import_selectors
     ),
 
     named_selector: $ => seq(
       field("name", $._identifier),
       optional(seq(choice("as", "=>"), choice(field("alias", $._identifier), "_"))),
+    ),
+
+    import_selectors: $ => seq(
+      "{", 
+      sep1(",", choice($.named_selector, $.wildcard_selector)), 
+      optional(","), 
+      "}"
     ),
 
     wildcard_selector: $ => choice(

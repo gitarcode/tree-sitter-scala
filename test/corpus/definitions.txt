@@ -361,17 +361,19 @@ import a.{ :: }
     (import_expression
       (identifier)
       (identifier)
-      (named_selector
-        (identifier))
-      (named_selector
-        (identifier))
-      (named_selector
-        (identifier))))
+      (import_selectors
+        (named_selector
+          (identifier))
+        (named_selector
+          (identifier))
+        (named_selector
+          (identifier)))))
   (import_declaration
     (import_expression
       (identifier)
-      (named_selector
-        (identifier))))
+      (import_selectors
+        (named_selector
+          (identifier)))))
   (import_declaration
     (import_expression
       (identifier)
@@ -380,8 +382,9 @@ import a.{ :: }
   (import_declaration
     (import_expression
       (identifier)
-      (named_selector
-        (operator_identifier)))))
+      (import_selectors
+        (named_selector
+          (operator_identifier))))))
 
 ================================================================================
 Imports: Wildcard
@@ -443,8 +446,9 @@ import tools.given
       (identifier)
       (identifier)
       (identifier)
-      (wildcard_selector)
-      (wildcard_selector)))
+      (import_selectors
+        (wildcard_selector)
+        (wildcard_selector))))
   (import_declaration
     (import_expression
       (identifier)
@@ -464,12 +468,13 @@ import tools.nsc.classpath.{given Test, given Test2, Test3}
       (identifier)
       (identifier)
       (identifier)
-      (wildcard_selector
-        (type_identifier))
-      (wildcard_selector
-        (type_identifier))
-      (named_selector
-        (identifier)))))
+      (import_selectors
+        (wildcard_selector
+          (type_identifier))
+        (wildcard_selector
+          (type_identifier))
+        (named_selector
+          (identifier))))))
 
 ================================================================================
 Imports: Rename (Scala 3 Syntax)
@@ -486,9 +491,10 @@ import lang.System.lineSeparator as _
     (import_expression
       (identifier)
       (identifier)
-      (named_selector
-        (identifier)
-        (identifier))))
+      (import_selectors
+        (named_selector
+          (identifier)
+          (identifier)))))
   (import_declaration
     (import_expression
       (identifier)
@@ -517,15 +523,17 @@ import lang.System.{lineSeparator => _}
     (import_expression
       (identifier)
       (identifier)
-      (named_selector
-        (identifier)
-        (identifier))))
+      (import_selectors
+        (named_selector
+          (identifier)
+          (identifier)))))
   (import_declaration
     (import_expression
       (identifier)
       (identifier)
-      (named_selector
-        (identifier)))))
+      (import_selectors
+        (named_selector
+          (identifier))))))
 
 ================================================================================
 Object definitions
@@ -2035,9 +2043,10 @@ export printUnit.Test as _
   (export_declaration
     (import_expression
       (identifier)
-      (named_selector
-        (identifier))
-      (wildcard_selector)))
+      (import_selectors
+        (named_selector
+          (identifier))
+        (wildcard_selector))))
   (export_declaration
     (import_expression
       (identifier)

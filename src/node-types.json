@@ -3610,12 +3610,12 @@
     "named": true,
     "fields": {
       "import_selector": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": ",",
-            "named": false
+            "type": "import_selectors",
+            "named": true
           },
           {
             "type": "named_selector",
@@ -3624,14 +3624,6 @@
           {
             "type": "wildcard_selector",
             "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
           }
         ]
       },
@@ -3663,6 +3655,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "import_selectors",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "named_selector",
+          "named": true
+        },
+        {
+          "type": "wildcard_selector",
+          "named": true
+        }
+      ]
     }
   },
   {
