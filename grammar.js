@@ -295,7 +295,7 @@ module.exports = grammar({
     ),
 
     named_selector: $ => seq(
-      field("name", $._identifier),
+      field("selector_name", $._identifier),
       optional(seq(choice("as", "=>"), choice(field("alias", $._identifier), "_"))),
     ),
 

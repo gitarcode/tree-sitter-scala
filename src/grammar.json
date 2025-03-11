@@ -874,7 +874,7 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "name",
+          "name": "selector_name",
           "content": {
             "type": "SYMBOL",
             "name": "_identifier"

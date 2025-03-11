@@ -4871,7 +4871,7 @@
           }
         ]
       },
-      "name": {
+      "selector_name": {
         "multiple": false,
         "required": true,
         "types": [
