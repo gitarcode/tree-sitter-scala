@@ -494,7 +494,7 @@ import lang.System.lineSeparator as _
       (multiple_selectors
         (named_selector
           (identifier)
-          (alias
+          (import_alias
             (identifier))))))
   (import_declaration
     (import_expression
@@ -502,7 +502,7 @@ import lang.System.lineSeparator as _
       (identifier)
       (named_selector
         (identifier)
-        (alias
+        (import_alias
           (identifier)))))
   (import_declaration
     (import_expression
@@ -510,7 +510,7 @@ import lang.System.lineSeparator as _
       (identifier)
       (named_selector
         (identifier)
-        (alias)))))
+        (import_alias)))))
 
 ================================================================================
 Imports: Rename
@@ -529,7 +529,7 @@ import lang.System.{lineSeparator => _}
       (multiple_selectors
         (named_selector
           (identifier)
-          (alias
+          (import_alias
             (identifier))))))
   (import_declaration
     (import_expression
@@ -538,7 +538,7 @@ import lang.System.{lineSeparator => _}
       (multiple_selectors
         (named_selector
           (identifier)
-          (alias))))))
+          (import_alias))))))
 
 ================================================================================
 Object definitions
@@ -2051,18 +2051,18 @@ export printUnit.Test as _
       (multiple_selectors
         (named_selector
           (identifier)
-          (alias))
+          (import_alias))
         (wildcard_selector))))
   (export_declaration
     (import_expression
       (identifier)
       (named_selector
         (identifier)
-        (alias
+        (import_alias
           (identifier)))))
   (export_declaration
     (import_expression
       (identifier)
       (named_selector
         (identifier)
-        (alias)))))
+        (import_alias)))))

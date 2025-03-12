@@ -337,26 +337,6 @@
     "fields": {}
   },
   {
-    "type": "alias",
-    "named": true,
-    "fields": {
-      "alias_name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "operator_identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "alternative_pattern",
     "named": true,
     "fields": {},
@@ -3611,6 +3591,26 @@
     }
   },
   {
+    "type": "import_alias",
+    "named": true,
+    "fields": {
+      "alias_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "import_declaration",
     "named": true,
     "fields": {},
@@ -4897,7 +4897,7 @@
       "required": false,
       "types": [
         {
-          "type": "alias",
+          "type": "import_alias",
           "named": true
         }
       ]

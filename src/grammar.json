@@ -885,7 +885,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "alias"
+              "name": "import_alias"
             },
             {
               "type": "BLANK"
@@ -894,7 +894,7 @@
         }
       ]
     },
-    "alias": {
+    "import_alias": {
       "type": "SEQ",
       "members": [
         {
