@@ -3591,6 +3591,26 @@
     }
   },
   {
+    "type": "import_alias",
+    "named": true,
+    "fields": {
+      "alias_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "import_declaration",
     "named": true,
     "fields": {},
@@ -3610,12 +3630,12 @@
     "named": true,
     "fields": {
       "import_selector": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": ",",
-            "named": false
+            "type": "multiple_selectors",
+            "named": true
           },
           {
             "type": "named_selector",
@@ -3624,14 +3644,6 @@
           {
             "type": "wildcard_selector",
             "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
           }
         ]
       },
@@ -4722,6 +4734,25 @@
     }
   },
   {
+    "type": "multiple_selectors",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "named_selector",
+          "named": true
+        },
+        {
+          "type": "wildcard_selector",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "name_and_type",
     "named": true,
     "fields": {
@@ -4846,20 +4877,6 @@
     "type": "named_selector",
     "named": true,
     "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "operator_identifier",
-            "named": true
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
@@ -4874,6 +4891,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "import_alias",
+          "named": true
+        }
+      ]
     }
   },
   {
