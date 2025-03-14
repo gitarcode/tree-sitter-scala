@@ -4239,6 +4239,24 @@
     "type": "lambda_expression",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "indented_block",
+            "named": true
+          },
+          {
+            "type": "indented_cases",
+            "named": true
+          }
+        ]
+      },
       "parameters": {
         "multiple": false,
         "required": true,
@@ -4259,24 +4277,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "indented_block",
-          "named": true
-        },
-        {
-          "type": "indented_cases",
-          "named": true
-        }
-      ]
     }
   },
   {
