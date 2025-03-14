@@ -5801,8 +5801,12 @@
             ]
           },
           {
-            "type": "SYMBOL",
-            "name": "_indentable_expression"
+            "type": "FIELD",
+            "name": "body",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_indentable_expression"
+            }
           }
         ]
       }

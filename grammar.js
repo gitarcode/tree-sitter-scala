@@ -1202,7 +1202,7 @@ module.exports = grammar({
           optional(seq(field("type_parameters", $.type_parameters), "=>")),
           field("parameters", $.lambda_parameters),
           choice("=>", "?=>"),
-          $._indentable_expression,
+          field("body", $._indentable_expression),
         ),
       ),
 
