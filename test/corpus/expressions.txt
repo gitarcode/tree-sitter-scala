@@ -1259,6 +1259,7 @@ object O {
             (identifier))
           (lambda_expression
             (lambda_parameters
+              (implicit_modifier)
               (identifier))
             (identifier))))
       (block

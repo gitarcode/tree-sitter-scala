@@ -730,9 +730,9 @@ module.exports = grammar({
               "abstract",
               "final",
               "sealed",
-              "implicit",
               "lazy",
               "override",
+              $.implicit_modifier,
               $.access_modifier,
               $.inline_modifier,
               $.infix_modifier,
@@ -758,6 +758,7 @@ module.exports = grammar({
     infix_modifier: $ => prec("mod", "infix"),
     open_modifier: $ => prec("mod", "open"),
     transparent_modifier: $ => prec("mod", "transparent"),
+    implicit_modifier: $ => "implicit",
 
     /**
      * InheritClauses    ::=  ['extends' ConstrApps] ['derives' QualId {',' QualId}]
@@ -1208,7 +1209,7 @@ module.exports = grammar({
 
     lambda_parameters: $ => choice(
       $.bindings,
-      seq(optional("implicit"), field("single_parameter", $._identifier)),
+      seq(optional($.implicit_modifier), field("single_parameter", $._identifier)),
       $.wildcard,
     ),
 

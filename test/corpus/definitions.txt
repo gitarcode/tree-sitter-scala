@@ -901,7 +901,8 @@ private[a] class D[T] private (x: T) {
 
 (compilation_unit
   (class_definition
-    (modifiers)
+    (modifiers
+      (implicit_modifier))
     (identifier)
     (template_body
       (function_definition
