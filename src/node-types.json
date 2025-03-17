@@ -3823,11 +3823,39 @@
         "required": true,
         "types": [
           {
+            "type": "add_operator",
+            "named": true
+          },
+          {
+            "type": "colon_operator",
+            "named": true
+          },
+          {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
+            "type": "conjunction_operator",
+            "named": true
+          },
+          {
+            "type": "disjunction_operator",
+            "named": true
+          },
+          {
+            "type": "equality_operator",
+            "named": true
+          },
+          {
+            "type": "had_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
           {
-            "type": "operator_identifier",
+            "type": "multiply_operator",
             "named": true
           }
         ]
@@ -8172,6 +8200,10 @@
     "named": false
   },
   {
+    "type": "add_operator",
+    "named": true
+  },
+  {
     "type": "as",
     "named": false
   },
@@ -8192,12 +8224,28 @@
     "named": false
   },
   {
+    "type": "colon_operator",
+    "named": true
+  },
+  {
+    "type": "comparison_operator",
+    "named": true
+  },
+  {
+    "type": "conjunction_operator",
+    "named": true
+  },
+  {
     "type": "def",
     "named": false
   },
   {
     "type": "derives",
     "named": false
+  },
+  {
+    "type": "disjunction_operator",
+    "named": true
   },
   {
     "type": "do",
@@ -8214,6 +8262,10 @@
   {
     "type": "enum",
     "named": false
+  },
+  {
+    "type": "equality_operator",
+    "named": true
   },
   {
     "type": "export",
@@ -8252,6 +8304,10 @@
     "named": false
   },
   {
+    "type": "had_operator",
+    "named": true
+  },
+  {
     "type": "if",
     "named": false
   },
@@ -8286,6 +8342,10 @@
   {
     "type": "match",
     "named": false
+  },
+  {
+    "type": "multiply_operator",
+    "named": true
   },
   {
     "type": "new",

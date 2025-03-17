@@ -715,7 +715,7 @@ class MyClass extends Potato() with Tomato
       (arguments
         (infix_expression
           (identifier)
-          (operator_identifier)
+          (disjunction_operator)
           (identifier))))
     (template_body))
   (object_definition
@@ -1357,7 +1357,7 @@ class A:
               (integer_literal))
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (add_operator)
               (identifier))
             (comment))))
       (function_declaration
@@ -1737,7 +1737,7 @@ class A(val x: Int, val y: Int) {
         (arguments
           (infix_expression
             (identifier)
-            (operator_identifier)
+            (equality_operator)
             (integer_literal)))))))
 
 ================================================================================

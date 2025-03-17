@@ -57,7 +57,7 @@ class C {
                     (identifier))
                   (infix_expression
                     (identifier)
-                    (operator_identifier)
+                    (add_operator)
                     (integer_literal)))))
             (call_expression
               (identifier)
@@ -77,7 +77,7 @@ class C {
                     (identifier))
                   (infix_expression
                     (identifier)
-                    (operator_identifier)
+                    (add_operator)
                     (integer_literal)))))
             (block_comment)
             (call_expression
@@ -181,7 +181,7 @@ class C:
           (indented_block
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (add_operator)
               (integer_literal)))))
       (call_expression
         (field_expression
@@ -195,7 +195,7 @@ class C:
               (indented_block
                 (infix_expression
                   (identifier)
-                  (operator_identifier)
+                  (add_operator)
                   (integer_literal)))))))
       (call_expression
         (identifier)
@@ -492,7 +492,7 @@ class C:
               (infix_expression
                 (parenthesized_expression
                   (identifier))
-                (operator_identifier)
+                (disjunction_operator)
                 (call_expression
                   (identifier)
                   (arguments
@@ -503,7 +503,7 @@ class C:
               (infix_expression
                 (parenthesized_expression
                   (identifier))
-                (operator_identifier)
+                (conjunction_operator)
                 (field_expression
                   (identifier)
                   (identifier)))
@@ -546,7 +546,7 @@ def main() {
           (finally_clause
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (add_operator)
               (integer_literal))))
         (try_expression
           (block
@@ -643,7 +643,7 @@ def main(): Unit =
           (finally_clause
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (add_operator)
               (integer_literal))))
         (try_expression
           (indented_block
@@ -762,7 +762,7 @@ def matchTest(x: Int): String = x match {
             (guard
               (infix_expression
                 (identifier)
-                (operator_identifier)
+                (equality_operator)
                 (integer_literal))))
           (case_clause
             (identifier_pattern
@@ -770,7 +770,7 @@ def matchTest(x: Int): String = x match {
             (guard
               (infix_expression
                 (identifier)
-                (operator_identifier)
+                (equality_operator)
                 (integer_literal)))
             (integer_literal))
           (case_clause
@@ -790,7 +790,7 @@ def matchTest(x: Int): String = x match {
                   (identifier))))
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (add_operator)
               (identifier)))
           (case_clause
             (wildcard)
@@ -853,7 +853,7 @@ def matchTest(x: Int): String =
               (guard
                 (infix_expression
                   (identifier)
-                  (operator_identifier)
+                  (equality_operator)
                   (integer_literal)))
               (val_definition
                 (identifier_pattern
@@ -1034,13 +1034,13 @@ class C {
             (infix_expression
               (infix_expression
                 (identifier)
-                (operator_identifier)
+                (add_operator)
                 (identifier))
-              (operator_identifier)
+              (add_operator)
               (identifier))
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (multiply_operator)
               (identifier))))))))
 
 ================================================================================
@@ -1070,7 +1070,7 @@ class C {
             (infix_expression
               (prefix_expression
                 (identifier))
-              (operator_identifier)
+              (add_operator)
               (identifier))))))))
 
 ================================================================================
@@ -1100,7 +1100,7 @@ object O {
         (postfix_expression
           (infix_expression
             (integer_literal)
-            (operator_identifier)
+            (add_operator)
             (integer_literal))
           (identifier))))))
 
@@ -1185,7 +1185,7 @@ object O {
             (identifier))
           (infix_expression
             (identifier)
-            (operator_identifier)
+            (add_operator)
             (integer_literal))))
       (val_definition
         (identifier_pattern
@@ -1202,7 +1202,7 @@ object O {
           (block
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (multiply_operator)
               (identifier)))))
       (val_definition
         (identifier_pattern
@@ -1223,7 +1223,7 @@ object O {
                   (identifier))
                 (infix_expression
                   (integer_literal)
-                  (operator_identifier)
+                  (add_operator)
                   (identifier)))
               (identifier)))))
       (block
@@ -1236,11 +1236,11 @@ object O {
                 (identifier))
               (infix_expression
                 (integer_literal)
-                (operator_identifier)
+                (multiply_operator)
                 (identifier)))
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (multiply_operator)
               (identifier)))))
       (block
         (lambda_expression
@@ -1408,7 +1408,7 @@ def f = {
           (parenthesized_expression
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (comparison_operator)
               (identifier)))
           (block
             (identifier)))))))
@@ -1447,7 +1447,7 @@ def f: Unit =
               (integer_literal))
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (comparison_operator)
               (identifier)))
           (indented_block
             (unit)))))))
@@ -1481,7 +1481,7 @@ def f() = {
           (parenthesized_expression
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (conjunction_operator)
               (identifier))))
         (do_while_expression
           (block
@@ -1498,7 +1498,7 @@ def f() = {
           (parenthesized_expression
             (infix_expression
               (identifier)
-              (operator_identifier)
+              (comparison_operator)
               (identifier))))))))
 
 ================================================================================
@@ -1534,7 +1534,7 @@ def f() = {
               (identifier)))
           (infix_expression
             (identifier)
-            (operator_identifier)
+            (add_operator)
             (integer_literal)))
         (for_expression
           (enumerators
@@ -1562,7 +1562,7 @@ def f() = {
                 (identifier))
               (infix_expression
                 (identifier)
-                (operator_identifier)
+                (add_operator)
                 (identifier)))
             (enumerator
               (identifier_pattern
@@ -1622,7 +1622,7 @@ def f(): Unit =
               (identifier)))
           (infix_expression
             (identifier)
-            (operator_identifier)
+            (add_operator)
             (integer_literal)))
         (for_expression
           (enumerators
@@ -1699,7 +1699,7 @@ def main() {
           (arguments
             (infix_expression
               (wildcard)
-              (operator_identifier)
+              (multiply_operator)
               (integer_literal))))
         (call_expression
           (field_expression
@@ -1708,7 +1708,7 @@ def main() {
           (arguments
             (infix_expression
               (wildcard)
-              (operator_identifier)
+              (multiply_operator)
               (integer_literal))))
         (field_expression
           (identifier)
@@ -1881,7 +1881,7 @@ addSbtPlugin("foo" % "bar" % "0.1")
       (identifier))
     (infix_expression
       (identifier)
-      (operator_identifier)
+      (add_operator)
       (string)))
   (if_expression
     (boolean_literal)
@@ -1896,9 +1896,9 @@ addSbtPlugin("foo" % "bar" % "0.1")
       (infix_expression
         (infix_expression
           (string)
-          (operator_identifier)
+          (multiply_operator)
           (string))
-        (operator_identifier)
+        (multiply_operator)
         (string)))))
 
 ================================================================================
