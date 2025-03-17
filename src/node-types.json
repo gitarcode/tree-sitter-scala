@@ -3591,6 +3591,11 @@
     }
   },
   {
+    "type": "implicit_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "import_alias",
     "named": true,
     "fields": {
@@ -4307,6 +4312,10 @@
           "named": true
         },
         {
+          "type": "implicit_modifier",
+          "named": true
+        },
+        {
           "type": "wildcard",
           "named": true
         }
@@ -4712,6 +4721,10 @@
       "types": [
         {
           "type": "access_modifier",
+          "named": true
+        },
+        {
+          "type": "implicit_modifier",
           "named": true
         },
         {

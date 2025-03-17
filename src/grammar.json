@@ -3283,15 +3283,15 @@
               },
               {
                 "type": "STRING",
-                "value": "implicit"
-              },
-              {
-                "type": "STRING",
                 "value": "lazy"
               },
               {
                 "type": "STRING",
                 "value": "override"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "implicit_modifier"
               },
               {
                 "type": "SYMBOL",
@@ -3408,6 +3408,10 @@
         "type": "STRING",
         "value": "transparent"
       }
+    },
+    "implicit_modifier": {
+      "type": "STRING",
+      "value": "implicit"
     },
     "extends_clause": {
       "type": "PREC_LEFT",
@@ -5825,8 +5829,8 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "implicit"
+                  "type": "SYMBOL",
+                  "name": "implicit_modifier"
                 },
                 {
                   "type": "BLANK"
