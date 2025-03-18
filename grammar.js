@@ -13,15 +13,17 @@ const PREC = {
   postfix: 5,
   colon_call: 5,
   infix: 6,
-  constructor_app: 7,
-  prefix: 7,
-  compound: 7,
-  call: 8,
-  field: 8,
-  macro: 10,
-  binding: 10,
+  constructor_app: 15,
+  prefix: 15,
+  compound: 15,
+  call: 16,
+  field: 17,
+  macro: 17,
+  binding: 17,
 };
 
+const OP_CHAR = token(/[!#%&*+:<=>?@\^,|~]|-/);
+  
 module.exports = grammar({
   name: "scala",
 
@@ -102,7 +104,8 @@ module.exports = grammar({
     [$.self_type, $.lambda_parameters],
     [$._simple_expression, $.lambda_parameters],
     [$.self_type, $._type_identifier, $.lambda_parameters],
-    [$._type_identifier, $.lambda_parameters]
+    [$._type_identifier, $.lambda_parameters],
+    [$.infix_expression, $.postfix_expression]
   ],
 
   word: $ => $._alpha_identifier,
@@ -1410,41 +1413,37 @@ module.exports = grammar({
         ),
       ),
 
-    infix_expression: $ =>
-      prec.left(
-        PREC.infix,
-        seq(
-          field(
-            "left",
-            choice(
-              $.infix_expression,
-              $.prefix_expression,
-              $._simple_expression,
-            ),
-          ),
-          field("operator", $._identifier),
-          field(
-            "right",
-            choice(
-              $.prefix_expression,
-              $._simple_expression,
-              $.colon_argument,
-            ),
-          ),
-        ),
-      ),
+    infix_expression: $ => choice(
+      ...[
+        [$.identifier, 14],
+        [$.multiply_operator, 13],
+        [$.add_operator, 12],
+        [$.colon_operator, 11],
+        [$.comparison_operator, 10],
+        [$.equality_operator, 9],
+        [$.conjunction_operator, 8],
+        [$.had_operator, 7],
+        [$.disjunction_operator, 6],
+      ].map(([operator, precedence]) =>
+        prec.left(precedence, seq(
+          field("left", choice($.expression)),
+          field("operator", operator),
+          field("right", choice($.expression, $.colon_argument)),
+        ))
+    )),
 
-    /**
-     * PostfixExpr       ::=  InfixExpr [id]
-     */
-    postfix_expression: $ =>
-      prec.left(
-        PREC.postfix,
-        seq(
-          choice($.infix_expression, $.prefix_expression, $._simple_expression),
-          $._identifier,
-        ),
-      ),
+    multiply_operator: $ => token(seq(choice("*", "/", "%"), repeat(OP_CHAR))),
+    add_operator: $ => token(seq(choice("+", "-"), repeat(OP_CHAR))),
+    colon_operator: $ => token(seq(":", repeat(OP_CHAR))),
+    comparison_operator: $ => token(seq(choice("<", ">"), repeat(OP_CHAR))),
+    conjunction_operator: $ => token(seq("&", repeat(OP_CHAR))),
+    disjunction_operator: $ => token(seq("|", repeat(OP_CHAR))),
+    equality_operator: $ => token(seq(choice("=", "!"), repeat(OP_CHAR))),
+    had_operator: $ => token(seq("^", repeat(OP_CHAR))),
+
+    postfix_expression: $ => prec(PREC.postfix,
+      seq($.expression, $._identifier),
+    ),
 
     _postfix_expression_choice: $ =>
       prec.left(
@@ -1574,34 +1573,8 @@ module.exports = grammar({
 
     wildcard: $ => "_",
 
-    /**
-     * Regex patterns created to avoid matching // comments and /* comment starts.
-     * This could technically match illeagal tokens such as val ?// = 1
-     */
     operator_identifier: $ =>
-      token(
-        choice(
-          // opchar minus colon, equal, at
-          // Technically speaking, Sm (Math symbols https://www.compart.com/en/unicode/category/Sm)
-          // should be allowed as a single-characeter opchar, however, it includes `=`,
-          // so we should to avoid that to prevent bad parsing of `=` as infix term or type.
-          /[\-!#%&*+\/\\<>?\u005e\u007c~\u00ac\u00b1\u00d7\u00f7\u2190-\u2194\p{So}]/,
-          seq(
-            // opchar minus slash
-            /[\-!#%&*+\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/,
-            // opchar*
-            repeat1(/[\-!#%&*+\/\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/),
-          ),
-          seq(
-            // opchar
-            /[\-!#%&*+\/\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/,
-            // opchar minus slash and asterisk
-            /[\-!#%&+\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/,
-            // opchar*
-            repeat(/[\-!#%&*+\/\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/),
-          ),
-        ),
-      ),
+      token(repeat1(OP_CHAR)),
 
     _non_null_literal: $ =>
       choice(
@@ -1814,7 +1787,7 @@ module.exports = grammar({
 
     _shebang: $ => alias(token(seq("#!", /.*/)), $.comment),
 
-    comment: $ => seq(token("//"), choice($.using_directive, $._comment_text)),
+    comment: $ => seq(token(prec(1, "//")), choice($.using_directive, $._comment_text)),
     _comment_text: $ => token(prec(PREC.comment, /.*/)),
 
     using_directive: $ =>
@@ -1828,7 +1801,8 @@ module.exports = grammar({
     using_directive_value: $ => token(/.*/),
 
     block_comment: $ =>
-      seq(token("/*"), repeat(choice(token(/./), token("//"))), token("*/")),
+      // Give // higher precedence to be preferred over the start of a line comment
+      seq(token("/*"), repeat(choice(token(/./), token(prec(2, "//")))), token("*/")),
   },
 });
 

@@ -243,7 +243,7 @@ def foo(a: Boolean = false) = a && true
     (function_body
       (infix_expression
         (identifier)
-        (operator_identifier)
+        (conjunction_operator)
         (boolean_literal)))))
 
 ================================================================================
@@ -289,7 +289,7 @@ def foo(a: Char = 'c') = a + 'd'
     (function_body
       (infix_expression
         (identifier)
-        (operator_identifier)
+        (add_operator)
         (character_literal)))))
 
 ================================================================================
