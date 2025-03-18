@@ -22,7 +22,7 @@ const PREC = {
   binding: 17,
 };
 
-const OP_CHAR = token(/[!#%&*+-:<=>?@\^,|~]/);
+const OP_CHAR = token(/[!#%&*+:<=>?@\^,|~]|-/);
   
 module.exports = grammar({
   name: "scala",
@@ -1426,17 +1426,9 @@ module.exports = grammar({
         [$.disjunction_operator, 6],
       ].map(([operator, precedence]) =>
         prec.left(precedence, seq(
-          field("left", choice(
-            $.infix_expression,
-            $.prefix_expression,
-            $._simple_expression,
-          )),
+          field("left", choice($.expression)),
           field("operator", operator),
-          field("right", choice(
-              $.prefix_expression,
-              $._simple_expression,
-              $.colon_argument,
-            )),
+          field("right", choice($.expression, $.colon_argument)),
         ))
     )),
 
@@ -1449,17 +1441,9 @@ module.exports = grammar({
     equality_operator: $ => token(seq(choice("=", "!"), repeat(OP_CHAR))),
     had_operator: $ => token(seq("^", repeat(OP_CHAR))),
 
-    /**
-     * PostfixExpr       ::=  InfixExpr [id]
-     */
-    postfix_expression: $ =>
-      prec.left(
-        PREC.postfix,
-        seq(
-          choice($.infix_expression, $.prefix_expression, $._simple_expression),
-          $._identifier,
-        ),
-      ),
+    postfix_expression: $ => prec(PREC.postfix,
+      seq($.expression, $._identifier),
+    ),
 
     _postfix_expression_choice: $ =>
       prec.left(
@@ -1589,34 +1573,8 @@ module.exports = grammar({
 
     wildcard: $ => "_",
 
-    /**
-     * Regex patterns created to avoid matching // comments and /* comment starts.
-     * This could technically match illeagal tokens such as val ?// = 1
-     */
     operator_identifier: $ =>
-      token(
-        choice(
-          // opchar minus colon, equal, at
-          // Technically speaking, Sm (Math symbols https://www.compart.com/en/unicode/category/Sm)
-          // should be allowed as a single-characeter opchar, however, it includes `=`,
-          // so we should to avoid that to prevent bad parsing of `=` as infix term or type.
-          /[\-!#%&*+\/\\<>?\u005e\u007c~\u00ac\u00b1\u00d7\u00f7\u2190-\u2194\p{So}]/,
-          seq(
-            // opchar minus slash
-            /[\-!#%&*+\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/,
-            // opchar*
-            repeat1(/[\-!#%&*+\/\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/),
-          ),
-          seq(
-            // opchar
-            /[\-!#%&*+\/\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/,
-            // opchar minus slash and asterisk
-            /[\-!#%&+\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/,
-            // opchar*
-            repeat(/[\-!#%&*+\/\\:<=>?@\u005e\u007c~\p{Sm}\p{So}]/),
-          ),
-        ),
-      ),
+      token(repeat1(OP_CHAR)),
 
     _non_null_literal: $ =>
       choice(
